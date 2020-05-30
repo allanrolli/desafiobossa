@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test jest",
+    "test": "set NODE_ENV=test&&jest --testTimeout=10000",
     "start": "node src/index.js",
     "dev": "nodemon src/index.js --ignore __tests__"
   },
@@ -17,6 +17,7 @@
     "nodemon": "^2.0.4"
   },
   "devDependencies": {
-    "jest": "^26.0.1"
+    "jest": "^26.0.1",
+    "supertest": "^4.0.2"
   }
 }

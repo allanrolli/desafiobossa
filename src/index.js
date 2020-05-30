@@ -1,6 +1,7 @@
 require("dotenv").config({
-  path: process.env.NODE_ENV === "test" ? ".env.test" : ".env",
+  path: process.env.NODE_ENV == "test" ? ".env.test" : ".env",
 });
+
 const express = require("express");
 
 const app = express();
@@ -17,7 +18,7 @@ mongoose
       useUnifiedTopology: true,
     }
   )
-  .then(console.log("Conectado com sucesso"))
+  .then(console.log("Successfully connected"))
   .catch((error) => console.log(error));
 
 app.use(express.json());
