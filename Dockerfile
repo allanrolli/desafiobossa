@@ -1,17 +1,11 @@
 FROM node:12-alpine
 
-RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
+RUN mkdir /app
 
-WORKDIR /home/node/app
+ADD . /app
 
-COPY package*.json ./
-
-USER node
-
-RUN npm install
-
-COPY --chown=node:node . .
+WORKDIR /app
 
 EXPOSE 3000
 
-CMD [ "node", "index.js" ]
+CMD node index.js --bind 0.0.0.0:$PORT
