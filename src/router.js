@@ -13,4 +13,10 @@ router.post("/tools", authMiddleware, Tools.store);
 router.post("/createUser", authMiddleware, User.store);
 router.delete("/tools/:id", authMiddleware, Tools.remove);
 
+router.get("/", (req, res) => {
+  console.log("Entrei aqui");
+
+  return res.send("Esta é a página principal");
+});
+
 module.exports = router;
