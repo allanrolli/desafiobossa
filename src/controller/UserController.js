@@ -1,4 +1,7 @@
-const User = require("../model/User");
+const User = require("../models/User");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const authConfig = require("../config/auth.json");
 
 class UserController {
   async findAll(req, res) {
@@ -8,8 +11,42 @@ class UserController {
   }
 
   async store(req, res) {
-    const create = await User.create(req.body);
-    return res.status(201).send(create);
+    const { email } = req.body;
+    try {
+      if (await User.findOne({ email }))
+        return res.status(400).send({ error: "User already exists" });
+
+      const user = await User.create(req.body);
+      const token = jwt.sign({ id: user.id }, authConfig.secret, {
+        expiresIn: 86400,
+      });
+      user.password = undefined;
+
+      return res.status(201).send({ user, token });
+    } catch (error) {
+      res.status(400).send({ error: "Registration failed" });
+    }
+  }
+
+  async authenticate(req, res) {
+    const { email, password } = req.body;
+
+    try {
+      const user = await User.findOne({ email }).select("+password");
+
+      if (!user || !(await bcrypt.compare(password, user.password)))
+        return res.status(401).send({ error: "Wrong user or email" });
+
+      user.password = undefined;
+
+      const token = jwt.sign({ id: user.id }, authConfig.secret, {
+        expiresIn: 86400,
+      });
+
+      res.send({ user, token });
+    } catch (error) {
+      res.send(error);
+    }
   }
 }
 

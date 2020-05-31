@@ -6,6 +6,7 @@ const router = express.Router();
 router.get("/list", Tools.findAll);
 router.get("/listUser", User.findAll);
 router.get("/tools", Tools.findOne);
+router.post("/authenticate", User.authenticate);
 router.post("/tools", Tools.store);
 router.post("/createUser", User.store);
 router.delete("/tools/:id", Tools.remove);
