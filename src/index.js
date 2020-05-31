@@ -25,4 +25,4 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(require("./router"));
 
-server.listen(process.env.SERVER_PORT);
+server.listen(process.env.PORT);
