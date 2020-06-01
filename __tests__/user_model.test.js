@@ -1,5 +1,4 @@
 const { MongoClient } = require("mongodb");
-//const User = require(__dirname + "/controller/UserController");
 
 describe("insert", () => {
   let connection;
