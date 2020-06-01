@@ -4,7 +4,7 @@
 
 This project has the purpose of documentation to be inserted in my portfolio.
 
-You can create users, list all of them, create, list and delete the tools.
+You can authenticate a user lika a login, create users, list all of them, create, list and delete the tools.
 
 ## 👨🏾‍🏫 Documentation
 
