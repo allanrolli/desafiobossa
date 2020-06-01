@@ -14,7 +14,7 @@ When you access the http://localhost:3000/ has the documentation maked with agli
 - [MongoDB](https://www.mongodb.com/)
 
 
-<img src="https://www.luiztools.com.br/wp-content/uploads/2016/10/node-js-mongodb.png" width="150" height="150">
+<img src="https://www.luiztools.com.br/wp-content/uploads/2016/10/node-js-mongodb.png">
 
 ## :information_source: How To Use
 
