@@ -47,6 +47,7 @@ $ heroku config:set POLLS_CAN_CREATE_QUESTION=false
 $ heroku config:set POLLS_CAN_DELETE_QUESTION=false
 ```
 ### Deploying on Heroku using Docker
+<img src="https://www.mundodocker.com.br/wp-content/uploads/2015/06/docker_facebook_share.png"/>
 
 If you'd like to, you may use Docker on Heroku instead. I created a Dockerfile to build an image in the root of the repository.Refer to the [Heroku
 Container Registry and Runtime
