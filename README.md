@@ -1,6 +1,6 @@
 # desafiobossa https://github.com/AllanRolli/desafiobossa
 [![desafiobossa Documentation](https://img.shields.io/badge/desafiobossa-Documented-blue.svg)](https://desafiobossa.docs.apiary.io/)
-[![Heroku CI Status](https://bossachallengebackend.herokuapp.com/last.svg)](https://dashboard.heroku.com/pipelines/{pipeline ID}/tests)
+[![Heroku CI Status](https://bossachallengebackend.herokuapp.com/last.svg)](https://dashboard.heroku.com/pipelines/7a19fc0d/tests)
 
 This project has the purpose of documentation to be inserted in my portfolio
 
