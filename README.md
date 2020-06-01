@@ -1,16 +1,19 @@
-# desafiobossa https://github.com/AllanRolli/desafiobossa
+# desafiobossa
 [![desafiobossa Documentation](https://img.shields.io/badge/desafiobossa-Documented-blue.svg)](https://desafiobossa.docs.apiary.io/)
 [![Heroku App Status](http://heroku-shields.herokuapp.com/bossachallengebackend)](https://bossachallengebackend.herokuapp.com)
-<img src="https://img.shields.io/github/languages/count/AllanRolli/desafiobossa"/>
 <img src="https://img.shields.io/github/last-commit/AllanRolli/desafiobossa"/>
 <img src="https://img.shields.io/github/license/AllanRolli/desafiobossa?style=plastic"/>
 
 
 This project has the purpose of documentation to be inserted in my portfolio
 
+## :rocket: Technologies
+
+-  [NodeJs](https://nodejs.org/en/)
+
 ## :information_source: How To Use
 
-To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js v12.17][nodejs] or higher + [Npm v6.10.2][npm] or higher installed on your computer. From your command line:
+To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js v12.17][nodejs] or higher + [Npm v6.10.2](https://www.npmjs.com/get-npm) or higher installed on your computer. From your command line:
 
 ```bash
 # Clone this repository
@@ -28,6 +31,14 @@ $ npm run dev
 # Run the app in Production Environment
 $ npm start
 ```
+## Deploying
+
+### Deploying on Heroku
+
+Click the button below to automatically set up the Polls API in an app
+running on your Heroku account.
+
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/apiaryio/polls-api)
 
 ## :memo: License
 This project is under the MIT license. See the [LICENSE](https://github.com/AllanRolli/desafiobossa/blob/master/LICENSE) for more information.
