@@ -46,6 +46,19 @@ $ heroku config:set POLLS_CAN_VOTE_QUESTION=false
 $ heroku config:set POLLS_CAN_CREATE_QUESTION=false
 $ heroku config:set POLLS_CAN_DELETE_QUESTION=false
 ```
+### Deploying on Heroku using Docker
+
+If you'd like to, you may use Docker on Heroku instead. I created a Dockerfile to build an image in the root of the repository.Refer to the [Heroku
+Container Registry and Runtime
+Guide](https://devcenter.heroku.com/articles/container-registry-and-runtime#getting-started)
+for detailed instructions. Providing you have Docker installed you can follow
+the following steps:
+
+```bash
+$ heroku container:login
+$ heroku container:push web
+$ heroku container:release web
+```
 
 ## :memo: License
 This project is under the MIT license. See the [LICENSE](https://github.com/AllanRolli/desafiobossa/blob/master/LICENSE) for more information.
