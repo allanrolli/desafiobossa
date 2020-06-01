@@ -1,11 +1,15 @@
 FROM node:12-alpine
 
-RUN mkdir /app
+# Create app directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-ADD . /app
+# Install app dependencies
+COPY package.json /usr/src/app/
+RUN npm install
 
-WORKDIR /app
+# Bundle app source
+COPY . /usr/src/app
 
 EXPOSE 3000
-
-CMD node index.js --bind 0.0.0.0:$PORT
+CMD [ "npm", "start" ]
