@@ -6,7 +6,7 @@
   "scripts": {
     "test": "set NODE_ENV=test&&jest --testTimeout=10000",
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js --ignore __tests__"
+    "dev": "nodemon src/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,10 +17,6 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.16",
     "nodemon": "^2.0.4"
-  },
-  "devDependencies": {
-    "jest": "^26.0.1",
-    "supertest": "^4.0.2"
   },
   "engines": {
     "node": "12.x"
