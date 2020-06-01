@@ -12,9 +12,9 @@ When you access the http://localhost:3000/ has the documentation maked with agli
 
 - [NodeJs](https://nodejs.org/en/)
 - [MongoDB](https://www.mongodb.com/)
-<p align="center"
+
 <img src="https://www.luiztools.com.br/wp-content/uploads/2016/10/node-js-mongodb.png">
-</p>
+
 ## :information_source: How To Use
 
 First you have to create an account in [MongoDB](https://www.mongodb.com/), after logged, create a free cluster, click in Collections and Create Database with the collection users, create the first user with name, email and password. Now you can login in application.
