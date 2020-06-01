@@ -11,7 +11,7 @@ const server = require("http").Server(app);
 const mongoose = require("mongoose");
 
 mongoose
-  .connect(`${process.env.MONGO_DB}`, {
+  .connect(`${process.env.MONGO_URL}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
