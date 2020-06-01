@@ -13,7 +13,7 @@ Inside the src/docs has the index.html maked with aglio or you can access in [![
 - [NodeJs](https://nodejs.org/en/)
 
 
-  <img src="https://i0.wp.com/codigosimples.net/wp-content/uploads/2017/03/nodejs.png?fit=500%2C500&ssl=1" width="200" height="200">
+  <img src="https://i0.wp.com/codigosimples.net/wp-content/uploads/2017/03/nodejs.png?fit=500%2C500&ssl=1" width="100" height="100">
 
 ## :information_source: How To Use
 
@@ -57,7 +57,7 @@ $ heroku config:set POLLS_CAN_DELETE_QUESTION=false
 
 ### Deploying on Heroku using Docker
 
-<img src="https://www.mundodocker.com.br/wp-content/uploads/2015/06/docker_facebook_share.png"/>
+<img src="https://www.mundodocker.com.br/wp-content/uploads/2015/06/docker_facebook_share.png" width="100" height="100">
 
 If you'd like to, you may use Docker on Heroku instead. I created a Dockerfile to build an image in the root of the repository.Refer to the [Heroku
 Container Registry and Runtime
