@@ -1,12 +1,6 @@
 # desafiobossa
-[![desafiobossa Documentation](https://img.shields.io/badge/desafiobossa-Documented-blue.svg)](https://desafiobossa.docs.apiary.io/)  
-[![Heroku App Status](http://heroku-shields.herokuapp.com/bossachallengebackend)](https://bossachallengebackend.herokuapp.com) 
-<p align="center">
-  <img src="https://img.shields.io/github/last-commit/AllanRolli/desafiobossa"/>
-  <img src="https://img.shields.io/github/languages/top/AllanRolli/desafiobossa?style=plastic"/> 
-  <img src="https://img.shields.io/github/repo-size/AllanRolli/desafiobossa?style=plastic"/> 
-  <img src="https://img.shields.io/github/license/AllanRolli/desafiobossa?style=plastic"/>
-</p>
+[![desafiobossa Documentation](https://img.shields.io/badge/desafiobossa-Documented-blue.svg)](https://desafiobossa.docs.apiary.io/) [![Heroku App Status](http://heroku-shields.herokuapp.com/bossachallengebackend)](https://bossachallengebackend.herokuapp.com)<img src="https://img.shields.io/github/last-commit/AllanRolli/desafiobossa"/><img src="https://img.shields.io/github/languages/top/AllanRolli/desafiobossa?style=plastic"/><img src="https://img.shields.io/github/repo-size/AllanRolli/desafiobossa?style=plastic"/><img src="https://img.shields.io/github/license/AllanRolli/desafiobossa?style=plastic"/>
+
 
 This project has the purpose of documentation to be inserted in my portfolio
 
