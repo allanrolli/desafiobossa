@@ -1,9 +1,11 @@
 const express = require("express");
+const cors = require("cors");
 const Tools = require("./controller/ToolController");
 const User = require("./controller/UserController");
 const authMiddleware = require("./middlewares/auth");
 const router = express.Router();
 
+router.use(cors());
 router.post("/authenticate", User.authenticate);
 
 router.get("/user", authMiddleware, User.findAll);
