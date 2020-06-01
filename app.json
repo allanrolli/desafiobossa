@@ -1,0 +1,20 @@
+{
+  "name": "desafiobossa",
+  "description": "This project has the purpose of documentation to be inserted in my portfolio.",
+  "repository": "https://github.com/AllanRolli/desafiobossa",
+  "website": "https://github.com/AllanRolli/desafiobossa",
+  "keywords": [
+    "api",
+    "node"
+  ],
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js --ignore __tests__"
+  },
+  "env": {
+    "POLLS_CAN_CREATE_QUESTION": "true",
+    "POLLS_CAN_DELETE_QUESTION": "true",
+    "POLLS_CAN_VOTE_QUESTION": "true",
+    "DISABLE_COLLECTSTATIC": "1"
+  }  
+}
