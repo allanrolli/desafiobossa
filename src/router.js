@@ -4,14 +4,13 @@ const User = require("./controller/UserController");
 const authMiddleware = require("./middlewares/auth");
 const router = express.Router();
 
-router.post("/authenticate", User.authenticate);
+router.post("/v1/authenticate", User.authenticate);
 
-router.get("/list", authMiddleware, Tools.findAll);
-router.get("/listUser", authMiddleware, User.findAll);
-router.get("/tools", authMiddleware, Tools.findOne);
-router.post("/tools", authMiddleware, Tools.store);
-router.post("/createUser", authMiddleware, User.store);
-router.delete("/tools/:id", authMiddleware, Tools.remove);
+router.get("/v1/user", authMiddleware, User.findAll);
+router.get("/v1/tools", authMiddleware, Tools.findOne);
+router.post("/v1/tools", authMiddleware, Tools.store);
+router.post("/v1/user", authMiddleware, User.store);
+router.delete("/v1/tools/:id", authMiddleware, Tools.remove);
 
 router.get("/", (req, res) => {
   console.log("Entrei aqui");

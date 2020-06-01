@@ -1,28 +1,30 @@
 const Tools = require("../models/Tools");
 
 class ToolController {
-  async findAll(req, res) {
-    const list = await Tools.find();
-
-    return res.json({ list });
-  }
-
   async findOne(req, res) {
     const filtro = await Tools.find(req.query);
 
-    return res.json(filtro);
+    return res.json({ filtro });
   }
 
   async store(req, res) {
-    const create = await Tools.create(req.body);
+    try {
+      const created = await Tools.create(req.body);
 
-    return res.status(201).send(create);
+      return res.status(201).send(created);
+    } catch (error) {
+      res.status(400).send({ error: "Registration failed" });
+    }
   }
 
   async remove(req, res) {
-    await Tools.findOneAndDelete(req.params.id);
+    try {
+      await Tools.findOneAndDelete(req.params.id);
 
-    return res.status(204).send();
+      return res.status(204).send();
+    } catch (error) {
+      res.status(404).send({ error: "An error has occurred" });
+    }
   }
 }
 module.exports = new ToolController();

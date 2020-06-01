@@ -1,0 +1,136 @@
+FORMAT: 1A
+HOST: http://api.sample.com.br/v1
+
+# Sample da API
+
+Descrição da Sample.
+
+# Group API
+
+## Sobre [/]
+
+Aqui podemos descrever detalhes que são comuns a todos os serviços como formatos, headers, tipos de erros, etc
+
+# Group Authenticate
+
+## Authenticate [/authenticate]
+
+### Authenticate user [POST]
+
++ Request Authentication
+
+    + Headers
+            
+            Content-Type: application/json
+            Authorization: Bearer Token
+    + Attributes (User)
+
++ Response 200 (application/json)
+    + Attributes (CreatedUser)
+
++ Response 400 (application/json)
+    + Attributes (Error)
+
+
+# Group User
+
+## Users [/user]
+
+### Create users [POST]
+
++ Request Create one user
+
+    + Headers
+            
+            Content-Type: application/json
+            Authorization: Bearer Token
+    + Attributes (AuthUser)
+
++ Response 201 (application/json)
+    + Attributes (CreatedUser)
+
++ Response 401 (application/json)
+    + Attributes (Error)
+
+### List users [GET]
+
++ Response 200 (application/json)
+    + Attributes (array[User])
+
++ Response 401 (application/json)
+    + Attributes (Error)
+
+# Group Tool
+
+## Tools [/tools]
+
+### Create tools [POST]
+
++ Request Create one tool
+
+    + Headers
+            
+            Content-Type: application/json            
+    + Attributes (Tool)
+
++ Response 201 (application/json)
+    + Attributes (CreatedTool)
+
++ Response 400 (application/json)
+    + Attributes (Error)
+
+### List tools [GET]
+
++ Response 200 (application/json)
+    + Attributes (array[CreatedTool])
+
++ Response 401 (application/json)
+    + Attributes (Error)
+
+### Delete tools [DELETE]
+
++ Response 200 (application/json)
+    + Attributes (Id)
+
++ Response 404 (application/json)
+    + Attributes (Error)
+
+# Data Structures
+
+## CreatedUser (object)
++ id (string) - Id generated
++ name (string) - Name of the user created
++ email (string) - Email of the user created
++ createdAt (string) - Date of the user created
++ token (string) - Token of logged in user
+
+## AuthUser (object)
++ email (string) - Email of the user created
++ password (string) - Password of the user
+
+## CreatedTool (object)
++ id (string) - Id generated
++ title (string) - Name of the tool
++ link (string) - Link of the tool
++ description (string) - Description of the tool
++ createdAt (string) - Date of the tool created
++ tags (array[string]) - Tags from the tool
+
+## Id (object)
++ id (string) - Id to be processed
+
+## Error (object)
++ code: 400 (number) - Status code
++ message (string) - Mensagem do status
+
+## User (object)
++ name (string) - Name of the user
++ email (string) - Email of the user
++ password (string) - Password of the user
++ token (string) - Token of logged in user
+
+## Tool (object)
++ title (string) - Name of the tool
++ link (string) - Link of the tool
++ description (string) - Description of the tool
++ tags (array[string]) - Tags from the tool
