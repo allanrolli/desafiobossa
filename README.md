@@ -1,12 +1,17 @@
 # desafiobossa
-[![desafiobossa Documentation](https://img.shields.io/badge/desafiobossa-Documented-blue.svg)](https://desafiobossa.docs.apiary.io/)  [![Heroku App Status](http://heroku-shields.herokuapp.com/bossachallengebackend)](https://bossachallengebackend.herokuapp.com)  <img src="https://img.shields.io/github/last-commit/AllanRolli/desafiobossa"/>  <img src="https://img.shields.io/github/languages/top/AllanRolli/desafiobossa?style=plastic"/>  <img src="https://img.shields.io/github/repo-size/AllanRolli/desafiobossa?style=plastic"/>  <img src="https://img.shields.io/github/license/AllanRolli/desafiobossa?style=plastic"/>
 
+[![desafiobossa Documentation](https://img.shields.io/badge/desafiobossa-Documented-blue.svg)](https://desafiobossa.docs.apiary.io/) [![Heroku App Status](http://heroku-shields.herokuapp.com/bossachallengebackend)](https://bossachallengebackend.herokuapp.com) <img src="https://img.shields.io/github/last-commit/AllanRolli/desafiobossa"/> <img src="https://img.shields.io/github/languages/top/AllanRolli/desafiobossa?style=plastic"/> <img src="https://img.shields.io/github/repo-size/AllanRolli/desafiobossa?style=plastic"/> <img src="https://img.shields.io/github/license/AllanRolli/desafiobossa?style=plastic"/>
 
 This project has the purpose of documentation to be inserted in my portfolio
 
+## 👨🏾‍🏫 Documentation
+
+Inside the src/docs has the index.html maked with aglio or you can access in [![desafiobossa Documentation](https://img.shields.io/badge/desafiobossa-Documented-blue.svg)](https://desafiobossa.docs.apiary.io/)
+
 ## :rocket: Technologies
 
--  [NodeJs](https://nodejs.org/en/)
+- [NodeJs](https://nodejs.org/en/)
+  <img src="https://i0.wp.com/codigosimples.net/wp-content/uploads/2017/03/nodejs.png?fit=500%2C500&ssl=1" width="200" height="200">
 
 ## :information_source: How To Use
 
@@ -28,6 +33,7 @@ $ npm run dev
 # Run the app in Production Environment
 $ npm start
 ```
+
 ## Deploying
 
 ### Deploying on Heroku
@@ -46,7 +52,9 @@ $ heroku config:set POLLS_CAN_VOTE_QUESTION=false
 $ heroku config:set POLLS_CAN_CREATE_QUESTION=false
 $ heroku config:set POLLS_CAN_DELETE_QUESTION=false
 ```
+
 ### Deploying on Heroku using Docker
+
 <img src="https://www.mundodocker.com.br/wp-content/uploads/2015/06/docker_facebook_share.png"/>
 
 If you'd like to, you may use Docker on Heroku instead. I created a Dockerfile to build an image in the root of the repository.Refer to the [Heroku
@@ -62,9 +70,14 @@ $ heroku container:release web
 ```
 
 ## :memo: License
+
 This project is under the MIT license. See the [LICENSE](https://github.com/AllanRolli/desafiobossa/blob/master/LICENSE) for more information.
 
 ---
 
-Made with ♥ by Allan Rolli :wave: [Get in touch!](https://www.linkedin.com/in/allan-rolli-a66198106/)
+## Author
 
+👤 **Allan Rolli**
+
+- Github: [@AllanRolli](https://github.com/AllanRolli)
+- LinkedIn: [@AllanRolli](https://www.linkedin.com/in/allan-rolli-a66198106/)
