@@ -1,15 +1,15 @@
 FORMAT: 1A
-HOST: http://api.sample.com.br/v1
+HOST: https://bossachallengebackend.herokuapp.com/v1
 
-# Sample da API
+# Challenge Bossa Box
 
-Descrição da Sample.
+API Description.
 
 # Group API
 
-## Sobre [/]
+## About [/]
 
-Aqui podemos descrever detalhes que são comuns a todos os serviços como formatos, headers, tipos de erros, etc
+This project has the purpose of documentation to be inserted in my portfolio
 
 # Group Authenticate
 
@@ -87,10 +87,30 @@ Aqui podemos descrever detalhes que são comuns a todos os serviços como format
 + Response 401 (application/json)
     + Attributes (Error)
 
-### Delete tools [DELETE]
+## Tools [/tools?queryKey=queryValue]
+
+### List tools [GET]
+
++ Request Find tools
+    + Parameters
+        + queryKey (string) - The key in query params 
+        + queryValue (string) - The value in query params
 
 + Response 200 (application/json)
-    + Attributes (Id)
+    + Attributes (array[CreatedTool])
+
++ Response 401 (application/json)
+    + Attributes (Error)
+
+## Tools [/tools/id]
+
+### Delete tools [DELETE]
+
++ Request Delete tool from id
+    + Parameters
+        + id (string) - The key of the tool
+
++ Response 204 (application/json)    
 
 + Response 404 (application/json)
     + Attributes (Error)
