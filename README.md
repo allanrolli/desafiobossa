@@ -1,8 +1,11 @@
 # desafiobossa
-[![desafiobossa Documentation](https://img.shields.io/badge/desafiobossa-Documented-blue.svg)](https://desafiobossa.docs.apiary.io/)
+<p align="center">[![desafiobossa Documentation](https://img.shields.io/badge/desafiobossa-Documented-blue.svg)](https://desafiobossa.docs.apiary.io/)
 [![Heroku App Status](http://heroku-shields.herokuapp.com/bossachallengebackend)](https://bossachallengebackend.herokuapp.com)
 <img src="https://img.shields.io/github/last-commit/AllanRolli/desafiobossa"/>
+<img src="https://img.shields.io/github/languages/top/AllanRolli/desafiobossa?style=plastic"/> 
+<img src="https://img.shields.io/github/repo-size/AllanRolli/desafiobossa?style=plastic"/> 
 <img src="https://img.shields.io/github/license/AllanRolli/desafiobossa?style=plastic"/>
+</p>
 
 
 This project has the purpose of documentation to be inserted in my portfolio
@@ -39,6 +42,16 @@ Click the button below to automatically set up the Polls API in an app
 running on your Heroku account.
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/AllanRolli/desafiobossa)
+
+Once you've deployed, you can easily clone the application and alter the
+configuration to disable features:
+
+```bash
+$ heroku clone -a new-app-name
+$ heroku config:set POLLS_CAN_VOTE_QUESTION=false
+$ heroku config:set POLLS_CAN_CREATE_QUESTION=false
+$ heroku config:set POLLS_CAN_DELETE_QUESTION=false
+```
 
 ## :memo: License
 This project is under the MIT license. See the [LICENSE](https://github.com/AllanRolli/desafiobossa/blob/master/LICENSE) for more information.
