@@ -4,6 +4,8 @@
 
 This project has the purpose of documentation to be inserted in my portfolio.
 
+You can create users, list all of them, create, list and delete the tools.
+
 ## 👨🏾‍🏫 Documentation
 
 When you access the http://localhost:3000/ has the documentation maked with aglio or you can access in [![desafiobossa Documentation](https://img.shields.io/badge/desafiobossa-APIBluePrint-blue.svg)](https://desafiobossa.docs.apiary.io/)
@@ -36,6 +38,7 @@ $ npm run dev
 # Run the app in Production Environment
 $ npm start
 ```
+Remember you have to insert the MONGO_URL in heroku config vars to use your application
 
 ## Deploying
 
