@@ -2,36 +2,37 @@
 [![desafiobossa Documentation](https://img.shields.io/badge/desafiobossa-Documented-blue.svg)](https://desafiobossa.docs.apiary.io/)
 [![Heroku App Status](http://heroku-shields.herokuapp.com/bossachallengebackend)](https://bossachallengebackend.herokuapp.com)
 <img src="https://img.shields.io/github/languages/count/AllanRolli/desafiobossa"/>
-<img src="https://img.shields.io/github/license/AllanRolli/desafiobossa?style=plastic"/>
 <img src="https://img.shields.io/github/last-commit/AllanRolli/desafiobossa"/>
+<img src="https://img.shields.io/github/license/AllanRolli/desafiobossa?style=plastic"/>
 
 
 This project has the purpose of documentation to be inserted in my portfolio
 
-## Getting Started
+## :information_source: How To Use
 
-Clone this repo to your local machine using https://github.com/AllanRolli/desafiobossa.git
+To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js v12.17][nodejs] or higher + [Npm v6.10.2][npm] or higher installed on your computer. From your command line:
 
-### Prerequisites
+```bash
+# Clone this repository
+$ git clone https://github.com/AllanRolli/desafiobossa.git
 
-What things you need to install the software and how to install them
+# Go into the repository
+$ cd desafiobossa
 
+# Install dependencies
+$ npm install
+
+# Run the app in Development Environment
+$ npm run dev
+
+# Run the app in Production Environment
+$ npm start
 ```
-You need NodeJs, if you don't have download in https://nodejs.org/en/
-```
 
-### Installing
+## :memo: License
+This project is under the MIT license. See the [LICENSE](https://github.com/AllanRolli/desafiobossa/blob/master/LICENSE) for more information.
 
-Open terminal in the file you just have cloned and give the command npm install
+---
 
-After the install give the command ```npm run start``` or ```npm run dev``` in case you want to use with nodemon,
-when you see in prompt ```"Succesfully Connected"```, the application is on air an ready to roll
+Made with ♥ by Allan Rolli :wave: [Get in touch!](https://www.linkedin.com/in/allan-rolli-a66198106/)
 
-## Authors
-
-* **Allan Rolli** - *Initial work* - (https://github.com/AllanRolli)
-
-## Acknowledgments
-
-* NodeJs
-* Bossa box Challenge
