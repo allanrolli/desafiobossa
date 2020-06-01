@@ -3,7 +3,6 @@
 [![Heroku App Status](http://heroku-shields.herokuapp.com/bossachallengebackend)](https://bossachallengebackend.herokuapp.com)
 <img src="https://img.shields.io/github/languages/count/AllanRolli/desafiobossa"/>
 <img src="https://img.shields.io/github/license/AllanRolli/desafiobossa?style=plastic"/>
-<img src="https://img.shields.io/github/commit-activity/w/AllanRolli/desafiobossa?style=plastic"/>
 <img src="https://img.shields.io/github/last-commit/AllanRolli/desafiobossa"/>
 
 
