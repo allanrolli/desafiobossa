@@ -2,18 +2,19 @@
 
 [![desafiobossa Documentation](https://img.shields.io/badge/desafiobossa-Documented-blue.svg)](https://desafiobossa.docs.apiary.io/) [![Heroku App Status](http://heroku-shields.herokuapp.com/bossachallengebackend)](https://bossachallengebackend.herokuapp.com) <img src="https://img.shields.io/github/last-commit/AllanRolli/desafiobossa"/> <img src="https://img.shields.io/github/repo-size/AllanRolli/desafiobossa?style=plastic"/> <img src="https://img.shields.io/github/license/AllanRolli/desafiobossa?style=plastic"/>
 
-This project has the purpose of documentation to be inserted in my portfolio
+This project has the purpose of documentation to be inserted in my portfolio.
 
 ## 👨🏾‍🏫 Documentation
 
-Inside the src/docs has the index.html maked with aglio or you can access in [![desafiobossa Documentation](https://img.shields.io/badge/desafiobossa-APIBluePrint-blue.svg)](https://desafiobossa.docs.apiary.io/)
+When you access the http://localhost:3000/ has the documentation maked with aglio or you can access in [![desafiobossa Documentation](https://img.shields.io/badge/desafiobossa-APIBluePrint-blue.svg)](https://desafiobossa.docs.apiary.io/)
 
 ## :rocket: Technologies
 
 - [NodeJs](https://nodejs.org/en/)
+- [MongoDB](https://www.mongodb.com/)
 
 
-  <img src="https://i0.wp.com/codigosimples.net/wp-content/uploads/2017/03/nodejs.png?fit=500%2C500&ssl=1" width="100" height="100">
+<img src="https://www.luiztools.com.br/wp-content/uploads/2016/10/node-js-mongodb.png" width="150" height="150">
 
 ## :information_source: How To Use
 
@@ -40,7 +41,7 @@ $ npm start
 
 ### Deploying on Heroku
 
-Click the button below to automatically set up the Polls API in an app
+Click the button below to automatically set up the desafiobossa API in an app
 running on your Heroku account.
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/AllanRolli/desafiobossa)
