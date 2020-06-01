@@ -6,7 +6,7 @@ This project has the purpose of documentation to be inserted in my portfolio
 
 ## 👨🏾‍🏫 Documentation
 
-Inside the src/docs has the index.html maked with aglio or you can access in [![desafiobossa Documentation](https://img.shields.io/badge/desafiobossa-API Blue Print-blue.svg)](https://desafiobossa.docs.apiary.io/)
+Inside the src/docs has the index.html maked with aglio or you can access in [![desafiobossa Documentation](https://img.shields.io/badge/desafiobossa-APIBluePrint-blue.svg)](https://desafiobossa.docs.apiary.io/)
 
 ## :rocket: Technologies
 
