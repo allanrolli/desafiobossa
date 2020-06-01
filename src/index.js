@@ -11,7 +11,7 @@ const server = require("http").Server(app);
 const mongoose = require("mongoose");
 
 mongoose
-  .connect(`${MONGO_DB}`, {
+  .connect(`${MONGO_URL}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
