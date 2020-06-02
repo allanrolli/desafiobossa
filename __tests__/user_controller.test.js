@@ -1,7 +1,6 @@
-const UserController = require("../src/controller/UserController");
+const UserController = require("../src/controllers/UserController");
 const request = require("supertest");
 const app = require("../src/router");
-const sinon = require("sinon");
 
 describe("UserController test", () => {
   it("has a module", () => {
