@@ -14,6 +14,9 @@ router.get("/tools", authMiddleware, Tools.findOne);
 router.post("/tools", authMiddleware, Tools.store);
 router.post("/user", authMiddleware, User.store);
 router.delete("/tools/:id", authMiddleware, Tools.remove);
+router.get("/test", async (req, res) => {
+  res.json({ message: "pass!" });
+});
 
 router.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + "/docs/index.html"));

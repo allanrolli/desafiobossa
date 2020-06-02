@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "set NODE_ENV=test&&jest",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=30000",
     "start": "node src/index.js",
     "dev": "nodemon src/index.js --ignore __tests__"
   },
@@ -22,6 +22,7 @@
     "node": "12.x"
   },
   "devDependencies": {
+    "cross-env": "^7.0.2",
     "jest": "^26.0.1",
     "nodemon": "^2.0.4",
     "supertest": "^4.0.2"

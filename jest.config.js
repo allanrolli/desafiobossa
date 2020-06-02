@@ -2,9 +2,9 @@
 // https://jestjs.io/docs/en/configuration.html
 
 module.exports = {
-  //bail: true,
+  bail: true,
   //clearMocks: true,
-  //testEnvironment: "node",
+  testEnvironment: "node",
   testMatch: ["**/__tests__/**/*.test.js?(x)"],
-  preset: "@shelf/jest-mongodb",
+  //preset: "@shelf/jest-mongodb",
 };

@@ -1,12 +1,31 @@
-const UserController = require("../src/controllers/UserController");
-const request = require("supertest");
-const app = require("../src/router");
+const supertest = require("supertest");
+const app = require("../src/server");
+const request = supertest(app);
 
-describe("UserController test", () => {
-  it("has a module", () => {
-    expect(UserController).toBeDefined();
+describe("GET and POST test", () => {
+  it("gets the test endpoint", async (done) => {
+    const response = await request.get("/test");
+
+    expect(response.status).toBe(200);
+    expect(response.body.message).toBe("pass!");
+    done();
+  });
+
+  it("gets the authenticate endpoint", async (done) => {
+    const response = await request.post("/authenticate").send({
+      email: "allan@teste.com",
+      password: "123456",
+    });
+    expect(response.status).toEqual(200);
+    done();
   });
 });
+
+// describe("UserController test", () => {
+//   it("has a module", () => {
+//     expect(UserController).toBeDefined();
+//   });
+// });
 
 //   describe("Authentication", () => {
 //     it("should authenticate credentials", async (req, res) => {
