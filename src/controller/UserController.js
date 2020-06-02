@@ -14,11 +14,11 @@ class UserController {
     const { email } = req.body;
     try {
       if (await User.findOne({ email }))
-        return res.status(400).send({ error: "User already exists" });
+        return res.status(400).json({ error: "User already exists" });
 
       const user = await User.create(req.body);
       const token = jwt.sign({ id: user.id }, authConfig.secret, {
-        expiresIn: 86400,
+        expiresIn: authConfig.ttl,
       });
       user.password = undefined;
 
@@ -39,15 +39,22 @@ class UserController {
 
       user.password = undefined;
 
+      //const token = this.generateToken(user);
       const token = jwt.sign({ id: user.id }, authConfig.secret, {
-        expiresIn: 86400,
+        expiresIn: authConfig.ttl,
       });
-
+      console.log(token);
       res.send({ user, token });
     } catch (error) {
       res.send(error);
     }
   }
+
+  // async generateToken({ user }) {
+  //   return jwt.sign({ user }, authConfig.secret, {
+  //     expiresIn: authConfig.ttl,
+  //   });
+  // }
 }
 
 module.exports = new UserController();

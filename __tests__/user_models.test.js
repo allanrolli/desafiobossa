@@ -36,4 +36,19 @@ describe("User model test", () => {
       expect(actual).toEqual(expected);
     });
   });
+
+  describe("save user", () => {
+    it("saves a user", async () => {
+      const user = new User({
+        name: "Allan2",
+        email: "allan7@teste.com",
+        password: "1234567",
+      });
+
+      const savedUser = await user.save();
+      const expected = "allan7@teste.com";
+      const actual = savedUser.email;
+      expect(actual).toEqual(expected);
+    });
+  });
 });

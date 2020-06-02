@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const Tools = mongoose.Schema({
+const ToolSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -22,4 +22,4 @@ const Tools = mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Tools", Tools);
+module.exports = mongoose.model("Tools", ToolSchema);
