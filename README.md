@@ -21,7 +21,6 @@ When you access the http://localhost:3000/ has the documentation maked with agli
 
 ## :information_source: How To Use
 
-First you have to create an account in [MongoDB](https://www.mongodb.com/), after logged, create a free cluster, click in Collections and Create Database with the collection users, create the first user with name, email and password. Now you can login in application.
 To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js v12.17](https://nodejs.org/en/) or higher + [Npm v6.10.2](https://www.npmjs.com/get-npm) or higher installed on your computer. From your command line:
 
 ```bash
@@ -33,14 +32,20 @@ $ cd desafiobossa
 
 # Install dependencies
 $ npm install
+```
+## MongoDB
 
+### MongoDB config
+
+You have to create an account in [MongoDB](https://www.mongodb.com/), after logged, create a free cluster, click in Collections and Create Database. Return in your cluster click in "connect" and in "Connect your application", copy the string and create a .env file inside the directory with a variable MONGO_URL=<<your_copy_string>>
+
+```bash
 # Run the app in Development Environment
 $ npm run dev
 
 # Run the app in Production Environment
 $ npm start
 ```
-Remember you have to insert the MONGO_URL in heroku config vars to use your application
 
 ## Deploying
 
@@ -60,6 +65,7 @@ $ heroku config:set POLLS_CAN_VOTE_QUESTION=false
 $ heroku config:set POLLS_CAN_CREATE_QUESTION=false
 $ heroku config:set POLLS_CAN_DELETE_QUESTION=false
 ```
+Remember that have to insert the MONGO_URL in heroku config vars to use your application.
 
 ### Deploying on Heroku using Docker
 
