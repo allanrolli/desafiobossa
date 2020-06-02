@@ -4,14 +4,6 @@ const UserController = require("../../src/controllers/UserController");
 const ToolConrtoller = require("../../src/controllers/ToolController");
 
 describe("Modules test", () => {
-  // beforeAll(async () => {
-  //   await User.remove({});
-  // });
-
-  // afterEach(async () => {
-  //   await User.remove({});
-  // });
-
   it("has a module User", () => {
     expect(User).toBeDefined();
   });

@@ -12,7 +12,7 @@ router.post("/authenticate", User.authenticate);
 router.get("/user", authMiddleware, User.findAll);
 router.get("/tools", authMiddleware, Tools.findOne);
 router.post("/tools", authMiddleware, Tools.store);
-router.post("/user", authMiddleware, User.store);
+router.post("/user", User.store);
 router.delete("/tools/:id", authMiddleware, Tools.remove);
 
 router.get("/", (req, res) => {

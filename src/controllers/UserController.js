@@ -43,7 +43,6 @@ class UserController {
       const token = jwt.sign({ id: user.id }, authConfig.secret, {
         expiresIn: authConfig.timer,
       });
-      console.log(token);
       res.send({ user, token });
     } catch (error) {
       res.send(error);
