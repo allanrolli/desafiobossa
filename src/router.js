@@ -1,8 +1,8 @@
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
-const Tools = require("./controller/ToolController");
-const User = require("./controller/UserController");
+const Tools = require("./controllers/ToolController");
+const User = require("./controllers/UserController");
 const authMiddleware = require("./middlewares/auth");
 const router = express.Router();
 
