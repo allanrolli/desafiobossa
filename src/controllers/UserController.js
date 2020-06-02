@@ -18,7 +18,7 @@ class UserController {
 
       const user = await User.create(req.body);
       const token = jwt.sign({ id: user.id }, authConfig.secret, {
-        expiresIn: authConfig.ttl,
+        expiresIn: 86400,
       });
       user.password = undefined;
 
@@ -41,7 +41,7 @@ class UserController {
 
       //const token = this.generateToken(user);
       const token = jwt.sign({ id: user.id }, authConfig.secret, {
-        expiresIn: authConfig.ttl,
+        expiresIn: 86400,
       });
       console.log(token);
       res.send({ user, token });
