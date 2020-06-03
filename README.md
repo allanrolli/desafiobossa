@@ -37,7 +37,7 @@ $ npm install
 
 ### MongoDB config
 
-You have to create an account in [MongoDB](https://www.mongodb.com/), after logged, create a free cluster, click in Collections and Create Database. Return in your cluster click in "connect" and in "Connect your application", copy the string and create a .env file inside the directory with a variable MONGO_URL=<<your_copy_string>>
+You have to create an account in [MongoDB](https://www.mongodb.com/), after logged, create a free cluster, click in Collections and Create Database. Return in your cluster click in "connect" and in "Connect your application", copy the string and create a .env and a .env.test file inside the directory with a variable MONGO_URL=<<your_copy_string>>
 
 ```bash
 # Run the app in Development Environment
@@ -45,6 +45,13 @@ $ npm run dev
 
 # Run the app in Production Environment
 $ npm start
+```
+
+## :warning: Running Tests
+
+```bash
+# Inside the directory desafiobossa
+$ npm test
 ```
 
 ## Deploying
