@@ -33,7 +33,12 @@ $ cd desafiobossa
 # Install dependencies
 $ npm install
 ```
+
 ## MongoDB
+
+### MongoDB script
+
+I create a script in mongo language to populate the database, inside the folder src/config you can check the code, need only to change the MONGO_URL to your connection string
 
 ### MongoDB config
 
@@ -72,6 +77,7 @@ $ heroku config:set POLLS_CAN_VOTE_QUESTION=false
 $ heroku config:set POLLS_CAN_CREATE_QUESTION=false
 $ heroku config:set POLLS_CAN_DELETE_QUESTION=false
 ```
+
 Remember that have to insert the MONGO_URL in heroku config vars to use your application.
 
 ### Deploying on Heroku using Docker
