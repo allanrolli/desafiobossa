@@ -27,9 +27,9 @@ describe("All routes test", () => {
       .post("/user")
       .set("Authorization", "Bearer " + token)
       .send({
-        name: "Allan100",
-        email: "allan100@teste.com",
-        password: "1234567",
+        name: "Allan",
+        email: "allan@teste.com",
+        password: "123456",
       });
     expect(response.status).toBe(201);
     done();
@@ -37,8 +37,8 @@ describe("All routes test", () => {
 
   it("gets the authenticate endpoint", async (done) => {
     const response = await request.post("/authenticate").send({
-      email: "allan100@teste.com",
-      password: "1234567",
+      email: "allan@teste.com",
+      password: "123456",
     });
     token = response.body.token;
     done();

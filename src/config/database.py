@@ -5,7 +5,7 @@ import dns
 
 client = pymongo.MongoClient(MONGO_URL)
 
-db = client.desafiobossa
+db = client.bossabox
 
 db.tools.insert_many(
     [
