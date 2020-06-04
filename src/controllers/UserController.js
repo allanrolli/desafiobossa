@@ -39,7 +39,6 @@ class UserController {
 
       user.password = undefined;
 
-      //const token = this.generateToken(user);
       const token = jwt.sign({ id: user.id }, authConfig.secret, {
         expiresIn: authConfig.timer,
       });
@@ -48,12 +47,6 @@ class UserController {
       res.send(error);
     }
   }
-
-  // async generateToken({ user }) {
-  //   return jwt.sign({ user }, authConfig.secret, {
-  //     expiresIn: authConfig.ttl,
-  //   });
-  // }
 }
 
 module.exports = new UserController();
