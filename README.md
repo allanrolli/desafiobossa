@@ -92,8 +92,8 @@ the following steps:
 
 ```bash
 $ heroku container:login
-$ heroku container:push web
-$ heroku container:release web
+$ heroku container:push web --app=name_of_your_app
+$ heroku container:release web --app=name_of_your_app
 ```
 
 ## :memo: License
