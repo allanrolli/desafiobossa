@@ -4,13 +4,13 @@ const jwt = require("jsonwebtoken");
 const authConfig = require("../config/auth.json");
 
 class UserController {
-  async findAll(req, res) {
+  async index(req, res) {
     const list = await User.find();
 
-    return res.json({ list });
+    return res.json(list);
   }
 
-  async store(req, res) {
+  async create(req, res) {
     const { email } = req.body;
     try {
       if (await User.findOne({ email }))

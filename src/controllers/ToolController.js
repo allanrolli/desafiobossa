@@ -1,13 +1,13 @@
 const Tools = require("../models/Tools");
 
 class ToolController {
-  async findOne(req, res) {
+  async show(req, res) {
     const filtro = await Tools.find(req.query);
 
-    return res.json({ filtro });
+    return res.json(filtro);
   }
 
-  async store(req, res) {
+  async create(req, res) {
     try {
       const created = await Tools.create(req.body);
 
@@ -17,7 +17,7 @@ class ToolController {
     }
   }
 
-  async remove(req, res) {
+  async delete(req, res) {
     try {
       await Tools.findOneAndDelete(req.params.id);
 
