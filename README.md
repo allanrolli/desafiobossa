@@ -8,9 +8,7 @@ You can authenticate a user like a login, create users, list all of them, create
 
 ## 👨🏾‍🏫 Documentation
 
-When you access the http://localhost:3000/ has the documentation maked with aglio or you can access in
-
-[![desafiobossa Documentation](https://img.shields.io/badge/desafiobossa-APIBluePrint-blue.svg)](https://desafiobossa.docs.apiary.io/)
+The documentation can be accessed in [![desafiobossa Documentation](https://img.shields.io/badge/desafiobossa-APIBluePrint-blue.svg)](https://desafiobossa.docs.apiary.io/)
 
 ## :rocket: Technologies
 
