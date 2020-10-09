@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test jest --testTimeout=30000 --runInBand --detectOpenHandles --forceExit",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=30000 --runInBand --detectOpenHandles --forceExit --coverage",
     "start": "node src/index.js",
     "dev": "nodemon src/index.js --ignore __tests__"
   },
@@ -16,7 +16,6 @@
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "jest-sonar-reporter": "^2.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.16"
   },
@@ -25,10 +24,14 @@
   },
   "devDependencies": {
     "jest": "^26.0.1",
+    "jest-sonar-reporter": "^2.0.0",
     "nodemon": "^2.0.4",
     "supertest": "^4.0.2"
-  },
-  "jest": {
-    "testResultsProcessor": "jest-sonar-reporter"
+  },  
+  "jestSonar": {
+    "reportPath": "reports",
+    "reportFile": "test-reporter.xml",
+    "indent": 4
   }
+    
 }
