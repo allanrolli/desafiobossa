@@ -2,11 +2,17 @@ image: docker:stable
 services:
   - docker:dind
 
-variables:
-  PAT: iKS6SmGoxzPgptUBuw3_  
-
 stages:  
-  - deploy_test 
+  - build_test
+  - deploy_test   
+
+build_test:
+  stage: build_test
+  script:
+    - cd app
+    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker build -t latest .
+    - docker push latest
 
 deploy_test:
   stage: deploy_test
