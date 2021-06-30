@@ -3,6 +3,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: desafiobossa  
+  namespace: default
+  labels:
+    app: "desafiobossa"
 spec:
   replicas: 1
   selector:
