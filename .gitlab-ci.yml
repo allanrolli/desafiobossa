@@ -37,6 +37,8 @@ deploy_test:
     - tar -zxvf ./helm-v2.8.2-linux-amd64.tar.gz
     - mv ./linux-amd64/helm /usr/local/bin/helm    
     - kubectl apply -f ./cluster/deployment.yaml
+    - kubectl apply -f ./cluster/service.yaml
+    - kubectl apply -f ./cluster/ingress.yaml
   only:
     - master
 
