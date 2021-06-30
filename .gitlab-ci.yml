@@ -19,9 +19,7 @@ deploy_test:
     - chmod +x ./kubectl
     - mv ./kubectl /usr/local/bin/kubectl
     - mkdir -p $HOME/.kube
-    - echo $KUBERNETES | base64 -d > $HOME/.kube/config
-    - echo $HOME/.kube/config
-    - export KUBECONFIG=$HOME/.kube/config
+    - cp $KUBECONFIG $HOME/.kube/config
     - kubectl get pods
     - curl -LO https://storage.googleapis.com/kubernetes-helm/helm-v2.8.2-linux-amd64.tar.gz
     - tar -zxvf ./helm-v2.8.2-linux-amd64.tar.gz
