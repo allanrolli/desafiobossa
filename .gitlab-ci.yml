@@ -1,8 +1,7 @@
 image: docker:stable
 services:
   - docker:dind
-variables:
-  DOCKER_HOST: tcp://localhost:2375
+variables:  
   CONTAINER_IMAGE: registry.gitlab.com/allanrolli/desafiobossa:latest
   VERSION: $CONTAINER_IMAGE:$CI_PIPELINE_IID
   VERSION_LAST: $CONTAINER_IMAGE:latest
