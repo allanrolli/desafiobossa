@@ -1,8 +1,8 @@
 image: docker:stable
 services:
   - docker:dind
-variables:    
-  CONTAINER_IMAGE: registry.gitlab.com/allanrolli/desafiobossa:latest
+variables:  
+  CONTAINER_IMAGE: $ACR_NAME/desafiobossa:latest
   VERSION: $CONTAINER_IMAGE:$CI_PIPELINE_IID
   VERSION_LAST: $CONTAINER_IMAGE:latest
   VERSION_HOMOLOG: $CONTAINER_IMAGE:homolog_$CI_PIPELINE_IID
@@ -16,7 +16,9 @@ stages:
 build_test:
   stage: build_test
   script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker login $ACR_NAME --username $SP_TENANT_ID --password $SP_PASSWD
+    # - docker login  -u 57c5a019-3b92-4e44-8ce9-a564b0775075 -p X_KN5funxWxh-HxzFg_Vm~wNLjvD214fbo 
+    # - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
     # - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - docker build -t $CONTAINER_IMAGE .
     - docker push $CONTAINER_IMAGE
@@ -32,7 +34,7 @@ deploy_test:
     - chmod +x ./kubectl
     - mv ./kubectl /usr/local/bin/kubectl
     - mkdir -p $HOME/.kube
-    - echo $KUBERNETES_SIC | base64 -d > $HOME/.kube/config
+    - echo $KUBERNETES | base64 -d > $HOME/.kube/config
     - export KUBECONFIG=$HOME/.kube/config    
     - kubectl get pods
     - curl -LO https://storage.googleapis.com/kubernetes-helm/helm-v2.8.2-linux-amd64.tar.gz
