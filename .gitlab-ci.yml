@@ -2,7 +2,7 @@ image: docker:stable
 services:
   - docker:dind
 variables:  
-  CONTAINER_IMAGE: $ACR_NAME/desafiobossa:latest
+  CONTAINER_IMAGE: $ACR_NAME
   VERSION: $CONTAINER_IMAGE:$CI_PIPELINE_IID
   VERSION_LAST: $CONTAINER_IMAGE:latest
   VERSION_HOMOLOG: $CONTAINER_IMAGE:homolog_$CI_PIPELINE_IID
