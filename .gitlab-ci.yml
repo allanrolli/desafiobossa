@@ -39,7 +39,7 @@ deploy_test:
     - kubectl get pods
     - curl -LO https://storage.googleapis.com/kubernetes-helm/helm-v2.8.2-linux-amd64.tar.gz
     - tar -zxvf ./helm-v2.8.2-linux-amd64.tar.gz
-    - sed -i 's/_VERSION_/'"test_$CI_PIPELINE_IID"'/g;' ./cluster/deployment.yaml
+    - sed -i 's/_VERSION_/'"$CI_PIPELINE_IID"'/g;' ./cluster/deployment.yaml
     - mv ./linux-amd64/helm /usr/local/bin/helm    
     - kubectl apply -f ./cluster/deployment.yaml
     - kubectl apply -f ./cluster/service.yaml
