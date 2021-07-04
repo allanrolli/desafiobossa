@@ -20,8 +20,8 @@ build_test:
     # - docker login  -u 57c5a019-3b92-4e44-8ce9-a564b0775075 -p X_KN5funxWxh-HxzFg_Vm~wNLjvD214fbo 
     # - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
     # - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
-    - docker build -t $CONTAINER_IMAGE .
-    - docker push $CONTAINER_IMAGE
+    - docker build -t $VERSION_TEST .
+    - docker push $VERSION_TEST
 
 deploy_test:
   stage: deploy_test
@@ -39,6 +39,7 @@ deploy_test:
     - kubectl get pods
     - curl -LO https://storage.googleapis.com/kubernetes-helm/helm-v2.8.2-linux-amd64.tar.gz
     - tar -zxvf ./helm-v2.8.2-linux-amd64.tar.gz
+    - sed -i 's/_VERSION_/'"test_$CI_PIPELINE_IID"'/g;' ./cluster/deployment.yaml
     - mv ./linux-amd64/helm /usr/local/bin/helm    
     - kubectl apply -f ./cluster/deployment.yaml
     - kubectl apply -f ./cluster/service.yaml
