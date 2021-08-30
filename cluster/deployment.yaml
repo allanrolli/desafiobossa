@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: desafiobossa
-          image: aksallanregistry.azurecr.io/desafiobossa:_VERSION_      
+          image: aksapresentacao.azurecr.io/desafiobossa:latest    
           ports:
             - containerPort: 3000
           env:

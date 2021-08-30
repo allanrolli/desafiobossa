@@ -12,10 +12,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - yasmin.allanteste.cloudns.ph
+    - apresentacao.allanteste.cloudns.ph
     secretName: yasmin-tls
   rules:
-  - host: yasmin.allanteste.cloudns.ph
+  - host: apresentacao.allanteste.cloudns.ph
     http:
       paths:
       - backend:
