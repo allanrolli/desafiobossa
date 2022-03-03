@@ -31,8 +31,7 @@ jobs:
 
       # build and push Docker image
       - run: |
-          TAG=$CIRCLE_TAG
-          docker build -t acrallandevd4it.azurecr.io/desafiobossa:$TAG .
+          docker build -t acrallandevd4it.azurecr.io/desafiobossa:latest .
           echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-          docker push acrallandevd4it.azurecr.io/desafiobossa:$TAG
+          docker push acrallandevd4it.azurecr.io/desafiobossa:latest
 
