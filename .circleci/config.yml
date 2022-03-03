@@ -9,7 +9,7 @@ workflows:
     jobs:
       - azure-acr/build-and-push-image:
           azure-username: acrallandevd4it
-          azure-password: AZURE_PASSWORD
+          azure-password: $AZURE_PW
           login-server-name: acrallandevd4it.azurecr.io
           registry-name: acrallandevd4it
           repo: desafiobossa
