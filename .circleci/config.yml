@@ -32,6 +32,6 @@ jobs:
       # build and push Docker image
       - run: |
           docker build -t acrallandevd4it.azurecr.io/desafiobossa:latest .
-          echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+          echo $DOCKER_PASS | docker login -u $DOCKER_USER -p $DOCKER_PASS acrallandevd4it.azurecr.io
           docker push acrallandevd4it.azurecr.io/desafiobossa:latest
 
