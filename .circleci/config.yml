@@ -1,16 +1,38 @@
 ---
+# version: 2.1
+
+# orbs: 
+#   azure-acr: circleci/azure-acr@0.2.0
+
+# workflows:
+#   build-and-publish-docker-image:
+#     jobs:
+#       - azure-acr/build-and-push-image:
+#           azure-username: acrallandevd4it
+#           azure-password: AZURE_PW
+#           login-server-name: acrallandevd4it.azurecr.io
+#           registry-name: acrallandevd4it
+#           repo: desafiobossa
+#           tag: $CIRCLE_TAG
+
+
 version: 2.1
+jobs:
+  build:
+    docker:
+      - image: cimg/go:1.17          # context / project UI env-var reference
+    steps:
+      - checkout
+      # ... steps for building/testing app ...
 
-orbs: 
-  azure-acr: circleci/azure-acr@0.2.0
+      - setup_remote_docker:
+          version: 19.03.13
+          docker_layer_caching: true
 
-workflows:
-  build-and-publish-docker-image:
-    jobs:
-      - azure-acr/build-and-push-image:
-          azure-username: acrallandevd4it
-          azure-password: AZURE_PW
-          login-server-name: acrallandevd4it.azurecr.io
-          registry-name: acrallandevd4it
-          repo: desafiobossa
-          tag: $CIRCLE_TAG
+      # build and push Docker image
+      - run: |
+          TAG=$CIRCLE_TAG
+          docker build -t acrallandevd4it.azurecr.io/desafiobossa:$TAG .
+          echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+          docker push acrallandevd4it.azurecr.io/desafiobossa:$TAG
+
