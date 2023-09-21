@@ -20,7 +20,7 @@ stages:
         aggressivemode: true
         threshold: '600'
         scantype: 'targetedScan'
-        url: '40.76.12.218'
+        url: 'http://40.76.12.218'
         port: '3000'
       displayName: 'Owasp Scan'
 
