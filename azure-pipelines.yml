@@ -112,7 +112,7 @@ stages:
         # fi
 
         # Defina o endereço do DefectDojo
-        DOJO_URL="http://40.76.9.4:8080/api/v2/import-scan/"
+        DOJO_URL="http://40.76.9.4:8080/api/v2/import-scan"
 
         # Defina a chave de API do DefectDojo
         API_KEY="cf326de10620957b17d2d41b6250e84b4f89f8b3"
