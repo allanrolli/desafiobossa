@@ -15,20 +15,20 @@ stages:
     - bash: docker run -d -p 3000:3000 defect
       displayName: 'App Container'
 
-    - task: SonarCloudPrepare@1
-      inputs:
-        SonarCloud: 'SonarCloud'
-        organization: 'allantests'
-        scannerMode: 'CLI'
-        configMode: 'file'
+    # - task: SonarCloudPrepare@1
+    #   inputs:
+    #     SonarCloud: 'SonarCloud'
+    #     organization: 'allantests'
+    #     scannerMode: 'CLI'
+    #     configMode: 'file'
 
-    - task: SonarCloudAnalyze@1
-      inputs:
-        jdkversion: 'JAVA_HOME_17_X64'
+    # - task: SonarCloudAnalyze@1
+    #   inputs:
+    #     jdkversion: 'JAVA_HOME_17_X64'
 
-    - task: SonarCloudPublish@1
-      inputs:
-        pollingTimeoutSec: '600'
+    # - task: SonarCloudPublish@1
+    #   inputs:
+    #     pollingTimeoutSec: '600'
 
     - task: owaspzap@1
       inputs:
@@ -96,11 +96,12 @@ stages:
         testResultsFormat: 'NUnit'
         testResultsFiles: 'owaspzap/test-results.xml' 
 
-    - task: PublishBuildArtifacts@1
-      inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)/owaspzap/test-results.xml'
-        ArtifactName: 'project'
-        publishLocation: 'Container' 
+    # - task: PublishBuildArtifacts@1
+    #   inputs:
+    #     PathtoPublish: '$(Build.ArtifactStagingDirectory)/owaspzap/test-results.xml'
+    #     ArtifactName: 'project'
+    #     publishLocation: 'Container' 
+    - bash : ls -lha owaspzap
 
     # - bash: |
     #     #!/bin/bash
