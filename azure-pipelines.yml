@@ -95,12 +95,14 @@ stages:
       inputs:
         testResultsFormat: 'NUnit'
         testResultsFiles: 'owaspzap/test-results.xml' 
+        
+    - bash: cp owaspzap/test-results.xml $(Build.ArtifactStagingDirectory)/test-results.xml
 
-    # - task: PublishBuildArtifacts@1
-    #   inputs:
-    #     PathtoPublish: 'owaspzap/test-results.xml'
-    #     ArtifactName: 'project'
-    #     publishLocation: 'Container' 
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)/test-results.xml'
+        ArtifactName: 'project'
+        publishLocation: 'Container' 
     # - bash : ls -lha owaspzap
 
     # - task: PublishTestResults@2
@@ -108,7 +110,7 @@ stages:
     #   inputs:
     #     testResultsFormat: 'NUnit'
     #     testResultsFiles: 'xml_report.xml'
-
+    
     - bash: |
         #!/bin/bash
         # Verifica se o arquivo foi fornecido como argumento
@@ -124,7 +126,7 @@ stages:
         API_KEY="cf326de10620957b17d2d41b6250e84b4f89f8b3"
 
         # Caminho para o arquivo OWASP
-        OWASP_RESULT=owaspzap/test-results.xml
+        OWASP_RESULT=$(Build.ArtifactStagingDirectory)/test-results.xml
 
         # Verifica se o arquivo existe
         if [ ! -f "$OWASP_RESULT" ]; then
@@ -133,9 +135,9 @@ stages:
         fi
 
         # Envia o arquivo para o DefectDojo
-        curl -X POST "$DOJO_URL" -H "Content-Type: multipart/form-data" -H "Authorization: Token $API_KEY" -F "product_name=Desafio Lab" -F "scan_type=ZAP Scan" -F "file=@owaspzap/report.json"
+        curl -X POST "$DOJO_URL" -H "Content-Type: multipart/form-data" -H "Authorization: Token $API_KEY" -F "product_name=Desafio Lab" -F "scan_type=ZAP Scan" -F "file=@$OWASP_RESULT"
 
-        curl -X POST "$DOJO_URL" -H "Content-Type: multipart/form-data" -H "Authorization: Token $API_KEY" -F "product_name=Desafio Lab" -F "engagement_name=Tests" -F "scan_type=ZAP Scan" -F "file=@owaspzap/report.json"
+        # curl -X POST "$DOJO_URL" -H "Content-Type: multipart/form-data" -H "Authorization: Token $API_KEY" -F "product_name=Desafio Lab" -F "engagement_name=Tests" -F "scan_type=ZAP Scan" -F "file=@owaspzap/report.json"
         
         # Verifica o código de status da requisição
         if [ $? -eq 0 ]; then
