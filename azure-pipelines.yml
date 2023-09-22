@@ -133,21 +133,10 @@ stages:
         fi
 
         # Envia o arquivo para o DefectDojo
-        curl -X POST "$DOJO_URL" \
-            -H 'Content-Type: multipart/form-data' \
-            -H "Authorization: Token $API_KEY" \
-            -F "product_name=Desafio Lab"
-            -F "scan_type=ZAP Scan" \
-            -F "file=@owaspzap/report.json"
+        curl -X POST "$DOJO_URL" -H "Content-Type: multipart/form-data" -H "Authorization: Token $API_KEY" -F "product_name=Desafio Lab" -F "scan_type=ZAP Scan" -F "file=@owaspzap/report.json"
 
-        curl -X POST "$DOJO_URL" \
-            -H 'Content-Type: multipart/form-data' \
-            -H "Authorization: Token $API_KEY" \
-            -F "product_name=Desafio Lab"
-            -F "engagement_name=Tests"
-            -F "scan_type=ZAP Scan" \
-            -F "file=@owaspzap/test-results.xml"
-
+        curl -X POST "$DOJO_URL" -H "Content-Type: multipart/form-data" -H "Authorization: Token $API_KEY" -F "product_name=Desafio Lab" -F "engagement_name=Tests" -F "scan_type=ZAP Scan" -F "file=@owaspzap/report.json"
+        
         # Verifica o código de status da requisição
         if [ $? -eq 0 ]; then
             echo "Arquivo enviado com sucesso para o DefectDojo."
