@@ -9,11 +9,11 @@ stages:
     steps:
     - checkout: self
     
-    - bash: docker build -t defect .
-      displayName: 'Build Image'
+    # - bash: docker build -t defect .
+    #   displayName: 'Build Image'
 
-    - bash: docker run -d -p 3000:3000 defect
-      displayName: 'App Container'
+    # - bash: docker run -d -p 3000:3000 defect
+    #   displayName: 'App Container'
 
     # - task: SonarCloudPrepare@1
     #   inputs:
@@ -30,105 +30,136 @@ stages:
     #   inputs:
     #     pollingTimeoutSec: '600'
 
-    - task: owaspzap@1
-      inputs:
-        aggressivemode: true
-        threshold: '600'
-        port: '3000'
-      displayName: 'Owasp Scan'
+    # - task: owaspzap@1
+    #   inputs:
+    #     aggressivemode: true
+    #     threshold: '600'
+    #     port: '3000'
+    #   displayName: 'Owasp Scan'
+
+    # - bash: |
+    #     sudo npm install -g handlebars-cmd
+    #     sudo cat <<EOF > owaspzap/nunit-template.hbs
+    #     {{#each site}}
+    #     <test-run
+    #         id="2"
+    #         name="Owasp test"
+    #         start-time="{{../[@generated]}}"  >
+    #         <test-suite
+    #             id="{{@index}}"
+    #             type="Assembly"
+    #             name="{{[@name]}}"
+    #             result="Failed"
+    #             failed="{{alerts.length}}">
+    #             <attachments>
+    #                 <attachment>
+    #                     <filePath>owaspzap/report.html</filePath>
+    #                 </attachment>
+    #             </attachments>
+    #         {{#each alerts}}<test-case
+    #             id="{{@index}}"
+    #             name="{{alert}}"
+    #             result="Failed"
+    #             fullname="{{alert}}"
+    #             time="1">
+    #                 <failure>
+    #                         <message>
+    #                          <![CDATA[{{{desc}}}]]>
+    #                     </message>
+    #                     <stack-trace>
+    #                         <![CDATA[
+    #     Solution:
+    #     {{{solution}}}
+    #     Reference:
+    #     {{{reference}}}
+    #     instances:{{#each instances}}
+    #     * {{uri}}
+    #         - {{method}}
+    #         {{#if evidence}}- {{{evidence}}}{{/if}}
+    #                          {{/each}}]]>
+    #                      </stack-trace>
+    #                 </failure>
+    #         </test-case>
+    #         {{/each}}
+    #         </test-suite>
+    #     </test-run>
+    #     {{/each}}
+    #     EOF
+    #   displayName: 'Owasp Nunit Template'
+    # - bash: 'handlebars owaspzap/report.json < owaspzap/nunit-template.hbs > owaspzap/test-results.xml'
+    #   displayName: 'Generate Nunit type file'
+
+
+    # - task: PublishTestResults@2
+    #   displayName: 'Publish Test Results'
+    #   inputs:
+    #     testResultsFormat: 'NUnit'
+    #     testResultsFiles: 'owaspzap/test-results.xml'  
+
+    # - bash: |
+    #     #!/bin/bash
+    #     # Verifica se o arquivo foi fornecido como argumento
+    #     # if [ $# -eq 0 ]; then
+    #     #     echo "Uso: $0 owaspzap/test-results.xml"
+    #     #     exit 1
+    #     # fi
+
+    #     # Defina o endereço do DefectDojo
+    #     DOJO_URL="http://40.76.9.4:8080/api/v2/import-scan/"
+
+    #     # Defina a chave de API do DefectDojo
+    #     API_KEY="cf326de10620957b17d2d41b6250e84b4f89f8b3"
+
+    #     # Caminho para o arquivo OWASP
+    #     OWASP_RESULT=owaspzap/test-results.xml
+
+    #     # Verifica se o arquivo existe
+    #     if [ ! -f "$OWASP_RESULT" ]; then
+    #         echo "O arquivo $OWASP_RESULT não existe."
+    #         exit 1
+    #     fi
+
+    #     # Envia o arquivo para o DefectDojo
+    #     curl -X POST "$DOJO_URL" \
+    #         -H "Authorization: Token $API_KEY" \
+    #         -F "engagement=1" \
+    #         -F "scan_type=ZAP Scan" \
+    #         -F "file=@$OWASP_RESULT"
+
+    #     # Verifica o código de status da requisição
+    #     if [ $? -eq 0 ]; then
+    #         echo "Arquivo enviado com sucesso para o DefectDojo."
+    #     else
+    #         echo "Ocorreu um erro ao enviar o arquivo para o DefectDojo."
+    #     fi
 
     - bash: |
-        sudo npm install -g handlebars-cmd
-        sudo cat <<EOF > owaspzap/nunit-template.hbs
-        {{#each site}}
-        <test-run
-            id="2"
-            name="Owasp test"
-            start-time="{{../[@generated]}}"  >
-            <test-suite
-                id="{{@index}}"
-                type="Assembly"
-                name="{{[@name]}}"
-                result="Failed"
-                failed="{{alerts.length}}">
-                <attachments>
-                    <attachment>
-                        <filePath>owaspzap/report.html</filePath>
-                    </attachment>
-                </attachments>
-            {{#each alerts}}<test-case
-                id="{{@index}}"
-                name="{{alert}}"
-                result="Failed"
-                fullname="{{alert}}"
-                time="1">
-                    <failure>
-                            <message>
-                             <![CDATA[{{{desc}}}]]>
-                        </message>
-                        <stack-trace>
-                            <![CDATA[
-        Solution:
-        {{{solution}}}
-        Reference:
-        {{{reference}}}
-        instances:{{#each instances}}
-        * {{uri}}
-            - {{method}}
-            {{#if evidence}}- {{{evidence}}}{{/if}}
-                             {{/each}}]]>
-                         </stack-trace>
-                    </failure>
-            </test-case>
-            {{/each}}
-            </test-suite>
-        </test-run>
-        {{/each}}
-        EOF
-      displayName: 'Owasp Nunit Template'
-    - bash: 'handlebars owaspzap/report.json < owaspzap/nunit-template.hbs > owaspzap/test-results.xml'
-      displayName: 'Generate Nunit type file'
+      #!/bin/bash
 
+      # Defina as credenciais e URLs
+      DOJO_URL="http://40.76.9.4:8080"
+      API_KEY="cf326de10620957b17d2d41b6250e84b4f89f8b3"
 
-    - task: PublishTestResults@2
-      displayName: 'Publish Test Results'
-      inputs:
-        testResultsFormat: 'NUnit'
-        testResultsFiles: 'owaspzap/test-results.xml'  
+      # Define o ID do engajamento no DefectDojo
+      ENGAGEMENT_ID=1
 
-    - bash: |
-        #!/bin/bash
-        # Verifica se o arquivo foi fornecido como argumento
-        # if [ $# -eq 0 ]; then
-        #     echo "Uso: $0 owaspzap/test-results.xml"
-        #     exit 1
-        # fi
+      # Passe o nome do projeto como argumento do script
+      SONAR_PROJECT_NAME=sonar-test      
 
-        # Defina o endereço do DefectDojo
-        DOJO_URL="http://40.76.9.4:8080/api/v2/import-scan/"
+      # Define o ID da configuração da ferramenta no DefectDojo (você pode obter isso no URL ao editar a Tool Configuration)
+      TOOL_CONFIG_ID=1
 
-        # Defina a chave de API do DefectDojo
-        API_KEY="cf326de10620957b17d2d41b6250e84b4f89f8b3"
+      # Aciona a importação do SonarCloud no DefectDojo para o engajamento específico
+      curl -X POST "$DOJO_URL/api/v1/tool_configurations/$TOOL_CONFIG_ID/import-scan/" \
+          -H "Authorization: Token $API_KEY" \
+          -d "engagement=$ENGAGEMENT_ID" \
+          -d "scan_type=SonarCloud" \
+          -d "sonar_project_name=$SONAR_PROJECT_NAME"
 
-        # Caminho para o arquivo OWASP
-        OWASP_RESULT=owaspzap/test-results.xml
-
-        # Verifica se o arquivo existe
-        if [ ! -f "$OWASP_RESULT" ]; then
-            echo "O arquivo $OWASP_RESULT não existe."
-            exit 1
-        fi
-
-        # Envia o arquivo para o DefectDojo
-        curl -X POST "$DOJO_URL" \
-            -H "Authorization: Token $API_KEY" \
-            -F "engagement=1" \
-            -F "scan_type=ZAP Scan" \
-            -F "file=@$OWASP_RESULT"
-
-        # Verifica o código de status da requisição
-        if [ $? -eq 0 ]; then
-            echo "Arquivo enviado com sucesso para o DefectDojo."
-        else
-            echo "Ocorreu um erro ao enviar o arquivo para o DefectDojo."
-        fi
+      # Verifica o código de status da requisição
+      if [ $? -eq 0 ]; then
+          echo "Importação iniciada com sucesso no DefectDojo para o engajamento $ENGAGEMENT_ID e projeto $SONAR_PROJECT_NAME."
+      else
+          echo "Ocorreu um erro ao iniciar a importação no DefectDojo."
+      fi
+    
