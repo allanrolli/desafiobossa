@@ -95,3 +95,40 @@ stages:
       inputs:
         testResultsFormat: 'NUnit'
         testResultsFiles: 'owaspzap/test-results.xml'  
+
+    - bash: |
+        #!/bin/bash
+        # Verifica se o arquivo foi fornecido como argumento
+        if [ $# -eq 0 ]; then
+            echo "Uso: $0 owaspzap/test-results.xml"
+            exit 1
+        fi
+
+        # Defina o endereço do DefectDojo
+        DOJO_URL="http://40.76.9.4:8080/api/v2/import-scan/"
+
+        # Defina a chave de API do DefectDojo
+        API_KEY="cf326de10620957b17d2d41b6250e84b4f89f8b3"
+
+        # Caminho para o arquivo OWASP
+        OWASP_RESULT=$1
+
+        # Verifica se o arquivo existe
+        if [ ! -f "$OWASP_RESULT" ]; then
+            echo "O arquivo $OWASP_RESULT não existe."
+            exit 1
+        fi
+
+        # Envia o arquivo para o DefectDojo
+        curl -X POST "$DOJO_URL" \
+            -H "Authorization: Token $API_KEY" \
+            -F "engagement=1" \
+            -F "scan_type=ZAP Scan" \
+            -F "file=@$OWASP_RESULT"
+
+        # Verifica o código de status da requisição
+        if [ $? -eq 0 ]; then
+            echo "Arquivo enviado com sucesso para o DefectDojo."
+        else
+            echo "Ocorreu um erro ao enviar o arquivo para o DefectDojo."
+        fi
