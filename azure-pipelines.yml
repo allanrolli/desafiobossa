@@ -9,26 +9,26 @@ stages:
     steps:
     - checkout: self
     
-    - bash: docker build -t defect .
-      displayName: 'Build Image'
+    # - bash: docker build -t defect .
+    #   displayName: 'Build Image'
 
-    - bash: docker run -d -p 3000:3000 defect
-      displayName: 'App Container'
+    # - bash: docker run -d -p 3000:3000 defect
+    #   displayName: 'App Container'
 
-    - task: SonarCloudPrepare@1
-      inputs:
-        SonarCloud: 'SonarCloud'
-        organization: 'allantests'
-        scannerMode: 'CLI'
-        configMode: 'file'
+    # - task: SonarCloudPrepare@1
+    #   inputs:
+    #     SonarCloud: 'SonarCloud'
+    #     organization: 'allantests'
+    #     scannerMode: 'CLI'
+    #     configMode: 'file'
 
-    - task: SonarCloudAnalyze@1
-      inputs:
-        jdkversion: 'JAVA_HOME_17_X64'
+    # - task: SonarCloudAnalyze@1
+    #   inputs:
+    #     jdkversion: 'JAVA_HOME_17_X64'
 
-    - task: SonarCloudPublish@1
-      inputs:
-        pollingTimeoutSec: '600'
+    # - task: SonarCloudPublish@1
+    #   inputs:
+    #     pollingTimeoutSec: '600'
 
     - task: owaspzap@1
       inputs:
@@ -99,10 +99,10 @@ stages:
     - bash: |
         #!/bin/bash
         # Verifica se o arquivo foi fornecido como argumento
-        if [ $# -eq 0 ]; then
-            echo "Uso: $0 owaspzap/test-results.xml"
-            exit 1
-        fi
+        # if [ $# -eq 0 ]; then
+        #     echo "Uso: $0 owaspzap/test-results.xml"
+        #     exit 1
+        # fi
 
         # Defina o endereço do DefectDojo
         DOJO_URL="http://40.76.9.4:8080/api/v2/import-scan/"
@@ -111,7 +111,7 @@ stages:
         API_KEY="cf326de10620957b17d2d41b6250e84b4f89f8b3"
 
         # Caminho para o arquivo OWASP
-        OWASP_RESULT=$1
+        OWASP_RESULT=owaspzap/test-results.xml
 
         # Verifica se o arquivo existe
         if [ ! -f "$OWASP_RESULT" ]; then
