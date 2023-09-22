@@ -132,7 +132,7 @@ stages:
             -H "Authorization: Token $API_KEY" \
             -F "engagement=1" \
             -F "scan_type=ZAP Scan" \
-            -F "file=@owaspzap/report.json"
+            -F "file=@owaspzap/test-results.xml"
 
         # Verifica o código de status da requisição
         if [ $? -eq 0 ]; then
