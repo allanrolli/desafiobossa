@@ -134,32 +134,32 @@ stages:
     #     fi
 
     - bash: |
-      #!/bin/bash
+        #!/bin/bash
 
-      # Defina as credenciais e URLs
-      DOJO_URL="http://40.76.9.4:8080"
-      API_KEY="cf326de10620957b17d2d41b6250e84b4f89f8b3"
+        # Defina as credenciais e URLs
+        DOJO_URL="http://40.76.9.4:8080"
+        API_KEY="cf326de10620957b17d2d41b6250e84b4f89f8b3"
 
-      # Define o ID do engajamento no DefectDojo
-      ENGAGEMENT_ID=1
+        # Define o ID do engajamento no DefectDojo
+        ENGAGEMENT_ID=1
 
-      # Passe o nome do projeto como argumento do script
-      SONAR_PROJECT_NAME=sonar-test      
+        # Passe o nome do projeto como argumento do script
+        SONAR_PROJECT_NAME=sonar-test      
 
-      # Define o ID da configuração da ferramenta no DefectDojo (você pode obter isso no URL ao editar a Tool Configuration)
-      TOOL_CONFIG_ID=1
+        # Define o ID da configuração da ferramenta no DefectDojo (você pode obter isso no URL ao editar a Tool Configuration)
+        TOOL_CONFIG_ID=1
 
-      # Aciona a importação do SonarCloud no DefectDojo para o engajamento específico
-      curl -X POST "$DOJO_URL/api/v1/tool_configurations/$TOOL_CONFIG_ID/import-scan/" \
-          -H "Authorization: Token $API_KEY" \
-          -d "engagement=$ENGAGEMENT_ID" \
-          -d "scan_type=SonarCloud" \
-          -d "sonar_project_name=$SONAR_PROJECT_NAME"
+        # Aciona a importação do SonarCloud no DefectDojo para o engajamento específico
+        curl -X POST "$DOJO_URL/api/v1/tool_configurations/$TOOL_CONFIG_ID/import-scan/" \
+            -H "Authorization: Token $API_KEY" \
+            -d "engagement=$ENGAGEMENT_ID" \
+            -d "scan_type=SonarCloud" \
+            -d "sonar_project_name=$SONAR_PROJECT_NAME"
 
-      # Verifica o código de status da requisição
-      if [ $? -eq 0 ]; then
-          echo "Importação iniciada com sucesso no DefectDojo para o engajamento $ENGAGEMENT_ID e projeto $SONAR_PROJECT_NAME."
-      else
-          echo "Ocorreu um erro ao iniciar a importação no DefectDojo."
-      fi
+        # Verifica o código de status da requisição
+        if [ $? -eq 0 ]; then
+            echo "Importação iniciada com sucesso no DefectDojo para o engajamento $ENGAGEMENT_ID e projeto $SONAR_PROJECT_NAME."
+        else
+            echo "Ocorreu um erro ao iniciar a importação no DefectDojo."
+        fi
     
