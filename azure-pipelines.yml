@@ -111,20 +111,20 @@ stages:
       
     - bash : ls -lha
 
-    - powershell: |
-        $XslPath = "**/**.xslt" 
-        $XmlInputPath = "xml_report.xml"
-        $XmlOutputPath = "converted_report.xml"
-        $XslTransform = New-Object System.Xml.Xsl.XslCompiledTransform
-        $XslTransform.Load($XslPath)
-        $XslTransform.Transform($XmlInputPath, $XmlOutputPath)
-      displayName: 'PowerShell Script'
+    # - powershell: |
+    #     $XslPath = "**/**.xslt" 
+    #     $XmlInputPath = "xml_report.xml"
+    #     $XmlOutputPath = "converted_report.xml"
+    #     $XslTransform = New-Object System.Xml.Xsl.XslCompiledTransform
+    #     $XslTransform.Load($XslPath)
+    #     $XslTransform.Transform($XmlInputPath, $XmlOutputPath)
+    #   displayName: 'PowerShell Script'
 
     - task: PublishTestResults@2
       displayName: 'Publish Test Results'
       inputs:
         testResultsFormat: 'NUnit'
-        testResultsFiles: 'converted_report.xml'
+        testResultsFiles: 'xml_report.xml'
 
     - bash: |
         #!/bin/bash
