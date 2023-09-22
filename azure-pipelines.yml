@@ -112,7 +112,7 @@ stages:
     - bash : ls -lha
 
     - powershell: |
-        $XslPath = "$(build.artifactstagingdirectory)/xml_to_nunit.xslt" 
+        $XslPath = "**/**.xslt" 
         $XmlInputPath = "xml_report.xml"
         $XmlOutputPath = "converted_report.xml"
         $XslTransform = New-Object System.Xml.Xsl.XslCompiledTransform
