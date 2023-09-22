@@ -9,92 +9,98 @@ stages:
     steps:
     - checkout: self
     
-    # - bash: docker build -t defect .
-    #   displayName: 'Build Image'
+    - bash: docker build -t defect .
+      displayName: 'Build Image'
 
-    # - bash: docker run -d -p 3000:3000 defect
-    #   displayName: 'App Container'
+    - bash: docker run -d -p 3000:3000 defect
+      displayName: 'App Container'
 
-    # - task: SonarCloudPrepare@1
-    #   inputs:
-    #     SonarCloud: 'SonarCloud'
-    #     organization: 'allantests'
-    #     scannerMode: 'CLI'
-    #     configMode: 'file'
+    - task: SonarCloudPrepare@1
+      inputs:
+        SonarCloud: 'SonarCloud'
+        organization: 'allantests'
+        scannerMode: 'CLI'
+        configMode: 'file'
 
-    # - task: SonarCloudAnalyze@1
-    #   inputs:
-    #     jdkversion: 'JAVA_HOME_17_X64'
+    - task: SonarCloudAnalyze@1
+      inputs:
+        jdkversion: 'JAVA_HOME_17_X64'
 
-    # - task: SonarCloudPublish@1
-    #   inputs:
-    #     pollingTimeoutSec: '600'
+    - task: SonarCloudPublish@1
+      inputs:
+        pollingTimeoutSec: '600'
 
-    # - task: owaspzap@1
-    #   inputs:
-    #     aggressivemode: true
-    #     threshold: '600'
-    #     port: '3000'
-    #   displayName: 'Owasp Scan'
+    - task: owaspzap@1
+      inputs:
+        aggressivemode: true
+        threshold: '600'
+        port: '3000'
+      displayName: 'Owasp Scan'
 
-    # - bash: |
-    #     sudo npm install -g handlebars-cmd
-    #     sudo cat <<EOF > owaspzap/nunit-template.hbs
-    #     {{#each site}}
-    #     <test-run
-    #         id="2"
-    #         name="Owasp test"
-    #         start-time="{{../[@generated]}}"  >
-    #         <test-suite
-    #             id="{{@index}}"
-    #             type="Assembly"
-    #             name="{{[@name]}}"
-    #             result="Failed"
-    #             failed="{{alerts.length}}">
-    #             <attachments>
-    #                 <attachment>
-    #                     <filePath>owaspzap/report.html</filePath>
-    #                 </attachment>
-    #             </attachments>
-    #         {{#each alerts}}<test-case
-    #             id="{{@index}}"
-    #             name="{{alert}}"
-    #             result="Failed"
-    #             fullname="{{alert}}"
-    #             time="1">
-    #                 <failure>
-    #                         <message>
-    #                          <![CDATA[{{{desc}}}]]>
-    #                     </message>
-    #                     <stack-trace>
-    #                         <![CDATA[
-    #     Solution:
-    #     {{{solution}}}
-    #     Reference:
-    #     {{{reference}}}
-    #     instances:{{#each instances}}
-    #     * {{uri}}
-    #         - {{method}}
-    #         {{#if evidence}}- {{{evidence}}}{{/if}}
-    #                          {{/each}}]]>
-    #                      </stack-trace>
-    #                 </failure>
-    #         </test-case>
-    #         {{/each}}
-    #         </test-suite>
-    #     </test-run>
-    #     {{/each}}
-    #     EOF
-    #   displayName: 'Owasp Nunit Template'
-    # - bash: 'handlebars owaspzap/report.json < owaspzap/nunit-template.hbs > owaspzap/test-results.xml'
-    #   displayName: 'Generate Nunit type file'
+    - bash: |
+        sudo npm install -g handlebars-cmd
+        sudo cat <<EOF > owaspzap/nunit-template.hbs
+        {{#each site}}
+        <test-run
+            id="2"
+            name="Owasp test"
+            start-time="{{../[@generated]}}"  >
+            <test-suite
+                id="{{@index}}"
+                type="Assembly"
+                name="{{[@name]}}"
+                result="Failed"
+                failed="{{alerts.length}}">
+                <attachments>
+                    <attachment>
+                        <filePath>owaspzap/report.html</filePath>
+                    </attachment>
+                </attachments>
+            {{#each alerts}}<test-case
+                id="{{@index}}"
+                name="{{alert}}"
+                result="Failed"
+                fullname="{{alert}}"
+                time="1">
+                    <failure>
+                            <message>
+                             <![CDATA[{{{desc}}}]]>
+                        </message>
+                        <stack-trace>
+                            <![CDATA[
+        Solution:
+        {{{solution}}}
+        Reference:
+        {{{reference}}}
+        instances:{{#each instances}}
+        * {{uri}}
+            - {{method}}
+            {{#if evidence}}- {{{evidence}}}{{/if}}
+                             {{/each}}]]>
+                         </stack-trace>
+                    </failure>
+            </test-case>
+            {{/each}}
+            </test-suite>
+        </test-run>
+        {{/each}}
+        EOF
+      displayName: 'Owasp Nunit Template'
+    - bash: 'handlebars owaspzap/report.json < owaspzap/nunit-template.hbs > owaspzap/test-results.xml'
+      displayName: 'Generate Nunit type file'
 
 
-    # - task: PublishTestResults@2
-    #   displayName: 'Publish Test Results'
-    #   inputs:
-    #     testResultsFormat: 'NUnit'
-    #     testResultsFiles: 'owaspzap/test-results.xml'  
+    - task: PublishTestResults@2
+      displayName: 'Publish Test Results'
+      inputs:
+        testResultsFormat: 'NUnit'
+        testResultsFiles: 'owaspzap/test-results.xml' 
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)/owaspzap/test-results.xml'
+        ArtifactName: 'project'
+        publishLocation: 'Container' 
 
     # - bash: |
     #     #!/bin/bash
@@ -133,33 +139,33 @@ stages:
     #         echo "Ocorreu um erro ao enviar o arquivo para o DefectDojo."
     #     fi
 
-    - bash: |
-        #!/bin/bash
+    # - bash: |
+    #     #!/bin/bash
 
-        # Defina as credenciais e URLs
-        DOJO_URL="http://40.76.9.4:8080"
-        API_KEY="cf326de10620957b17d2d41b6250e84b4f89f8b3"
+    #     # Defina as credenciais e URLs
+    #     DOJO_URL="http://40.76.9.4:8080"
+    #     API_KEY="cf326de10620957b17d2d41b6250e84b4f89f8b3"
 
-        # Define o ID do engajamento no DefectDojo
-        ENGAGEMENT_ID=1
+    #     # Define o ID do engajamento no DefectDojo
+    #     ENGAGEMENT_ID=1
 
-        # Passe o nome do projeto como argumento do script
-        SONAR_PROJECT_NAME=sonar-test      
+    #     # Passe o nome do projeto como argumento do script
+    #     SONAR_PROJECT_NAME=sonar-test      
 
-        # Define o ID da configuração da ferramenta no DefectDojo (você pode obter isso no URL ao editar a Tool Configuration)
-        TOOL_CONFIG_ID=1
+    #     # Define o ID da configuração da ferramenta no DefectDojo (você pode obter isso no URL ao editar a Tool Configuration)
+    #     TOOL_CONFIG_ID=1
 
-        # Aciona a importação do SonarCloud no DefectDojo para o engajamento específico
-        curl -X POST "$DOJO_URL/api/v1/tool_configurations/$TOOL_CONFIG_ID/import-scan/" \
-            -H "Authorization: Token $API_KEY" \
-            -d "engagement=$ENGAGEMENT_ID" \
-            -d "scan_type=SonarCloud" \
-            -d "sonar_project_name=$SONAR_PROJECT_NAME"
+    #     # Aciona a importação do SonarCloud no DefectDojo para o engajamento específico
+    #     curl -X POST "$DOJO_URL/api/v1/tool_configurations/$TOOL_CONFIG_ID/import-scan/" \
+    #         -H "Authorization: Token $API_KEY" \
+    #         -d "engagement=$ENGAGEMENT_ID" \
+    #         -d "scan_type=SonarCloud" \
+    #         -d "sonar_project_name=$SONAR_PROJECT_NAME"
 
-        # Verifica o código de status da requisição
-        if [ $? -eq 0 ]; then
-            echo "Importação iniciada com sucesso no DefectDojo para o engajamento $ENGAGEMENT_ID e projeto $SONAR_PROJECT_NAME."
-        else
-            echo "Ocorreu um erro ao iniciar a importação no DefectDojo."
-        fi
+    #     # Verifica o código de status da requisição
+    #     if [ $? -eq 0 ]; then
+    #         echo "Importação iniciada com sucesso no DefectDojo para o engajamento $ENGAGEMENT_ID e projeto $SONAR_PROJECT_NAME."
+    #     else
+    #         echo "Ocorreu um erro ao iniciar a importação no DefectDojo."
+    #     fi
     
