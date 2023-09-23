@@ -150,7 +150,7 @@ stages:
         # Upload the report to DefectDojo
         # curl -X POST -H "Authorization: Token $API_TOKEN" -F "scan_type=ZAP Scan" -F "engagement_name=Sonar test dast and sast" -F "file=@$FILE_PATH" $API_URL -F "product_name=Desafio Lab"
 
-        curl -X POST -H "Authorization: Token $API_TOKEN" -F "scan_type=ZAP Scan" -F "engagement_name=Sonar Engagement" -F "file=@$FILE_PATH" $API_URL -F "product_name=Desafio Lab" -F "auto_create_context=True"
+        curl -X POST -H "Authorization: Token $API_TOKEN" -F "scan_type=ZAP Scan" -F "engagement_name=Owasp Engagement bjshare" -F "file=@$FILE_PATH" $API_URL -F "product_name=Desafio Lab" -F "auto_create_context=True"
 
         # Envia o arquivo para o DefectDojo
         # curl -X POST "$DOJO_URL" -H "Content-Type: multipart/form-data" -H "Authorization: Token $API_KEY" -F "product_name=Desafio Lab" -F "scan_type=ZAP Scan" -F "file=@$OWASP_RESULT"
@@ -183,7 +183,7 @@ stages:
           -F 'verified=true' \
           -F 'close_old_findings=false' \
           -F 'test_title=Sonar test' \
-          -F 'engagement_name=Owasp Engagement bjshare' \
+          -F 'engagement_name=Sonar Engagement' \
           -F 'push_to_jira=false' \
           -F 'minimum_severity=Info' \
           -F 'close_old_findings_product_scope=false' \
