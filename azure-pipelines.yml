@@ -9,26 +9,26 @@ stages:
     steps:
     - checkout: self
     
-    - bash: docker build -t defect .
-      displayName: 'Build Image'
+    # - bash: docker build -t defect .
+    #   displayName: 'Build Image'
 
-    - bash: docker run -d -p 3000:3000 defect
-      displayName: 'App Container'
+    # - bash: docker run -d -p 3000:3000 defect
+    #   displayName: 'App Container'
 
-    - task: SonarCloudPrepare@1
-      inputs:
-        SonarCloud: 'SonarCloud'
-        organization: 'allantests'
-        scannerMode: 'CLI'
-        configMode: 'file'
+    # - task: SonarCloudPrepare@1
+    #   inputs:
+    #     SonarCloud: 'SonarCloud'
+    #     organization: 'allantests'
+    #     scannerMode: 'CLI'
+    #     configMode: 'file'
 
-    - task: SonarCloudAnalyze@1
-      inputs:
-        jdkversion: 'JAVA_HOME_17_X64'
+    # - task: SonarCloudAnalyze@1
+    #   inputs:
+    #     jdkversion: 'JAVA_HOME_17_X64'
 
-    - task: SonarCloudPublish@1
-      inputs:
-        pollingTimeoutSec: '600'
+    # - task: SonarCloudPublish@1
+    #   inputs:
+    #     pollingTimeoutSec: '600'
 
     - task: owaspzap@1
       inputs:
@@ -183,7 +183,7 @@ stages:
           -F 'verified=true' \
           -F 'close_old_findings=false' \
           -F 'test_title=Sonar test' \
-          -F 'engagement_name=Owasp Engagement' \
+          -F 'engagement_name=Owasp Engagement bjshare' \
           -F 'push_to_jira=false' \
           -F 'minimum_severity=Info' \
           -F 'close_old_findings_product_scope=false' \
