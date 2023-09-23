@@ -34,6 +34,8 @@ stages:
       inputs:
         aggressivemode: true
         threshold: '600'
+        scantype: 'targetedScan'
+        url: 'https://bj-share.info/'
         port: '3000'
       displayName: 'Owasp Scan'
 
@@ -151,13 +153,7 @@ stages:
         # curl -X POST -H "Authorization: Token $API_TOKEN" -F "scan_type=ZAP Scan" -F "engagement_name=Sonar test dast and sast" -F "file=@$FILE_PATH" $API_URL -F "product_name=Desafio Lab"
 
         curl -X POST -H "Authorization: Token $API_TOKEN" -F "scan_type=ZAP Scan" -F "engagement_name=Owasp Engagement bjshare" -F "file=@$FILE_PATH" $API_URL -F "product_name=Desafio Lab" -F "auto_create_context=True"
-  - task: owaspzap@1
-    inputs:
-      aggressivemode: true
-      threshold: '600'
-      scantype: 'targetedScan'
-      url: 'https://bj-share.info/'
-      port: '3000'
+
 
         # Envia o arquivo para o DefectDojo
         # curl -X POST "$DOJO_URL" -H "Content-Type: multipart/form-data" -H "Authorization: Token $API_KEY" -F "product_name=Desafio Lab" -F "scan_type=ZAP Scan" -F "file=@$OWASP_RESULT"
