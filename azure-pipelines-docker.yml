@@ -29,7 +29,7 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          $XslPath = "$(Build.ArtifactStagingDirectory)/xml_to_nunit.xslt" 
+          $XslPath = "desafiobossa/xml_to_nunit.xslt" 
           $XmlInputPath = "xml_report.xml"
           $XmlOutputPath = "converted_report.xml"
           $XslTransform = New-Object System.Xml.Xsl.XslCompiledTransform
