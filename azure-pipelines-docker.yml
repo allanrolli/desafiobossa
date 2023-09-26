@@ -7,7 +7,6 @@ stages:
     pool: 
       vmImage: 'ubuntu-latest'
     steps:
-    - checkout: self
 
     # - bash: ls -lha
     #   displayName: 'LS'
@@ -31,14 +30,7 @@ stages:
       displayName: 'PowerShell Script'
       inputs:
         targetType: 'inline'
-        script: |          
-          $XsltSettings = New-Object System.Xml.Xsl.XsltSettings
-          $XsltSettings.EnableDocumentFunction = 1
-          $XmlInputFile = "xml_report.xml"
-          $XmlOutputFile = "converted_report.xml"
-          $XslTransform = New-Object System.Xml.Xsl.XslCompiledTransform
-          $XSLInputElement.Transform($XMLInputFile, $XMLOutputFile) 
-          
+        script: ls
 
     - task: PublishTestResults@2
       displayName: 'Publish Test Results'
