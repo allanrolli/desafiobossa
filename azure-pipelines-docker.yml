@@ -30,7 +30,13 @@ stages:
       displayName: 'PowerShell Script'
       inputs:
         targetType: 'inline'
-        script: ls
+        script: |
+          $XslPath = "./xml_to_nunit.xslt" 
+              $XmlInputPath = "xml_report.xml"
+              $XmlOutputPath = "converted_report.xml"
+              $XslTransform = New-Object System.Xml.Xsl.XslCompiledTransform
+              $XslTransform.Load($XslPath)
+              $XslTransform.Transform($XmlInputPath, $XmlOutputPath)
 
     - task: PublishTestResults@2
       displayName: 'Publish Test Results'
