@@ -15,20 +15,20 @@ stages:
     - bash: docker run -d -p 3000:3000 defect
       displayName: 'App Container'
 
-    # - task: SonarCloudPrepare@1
-    #   inputs:
-    #     SonarCloud: 'SonarCloud'
-    #     organization: 'allantests'
-    #     scannerMode: 'CLI'
-    #     configMode: 'file'
+    - task: SonarCloudPrepare@1
+      inputs:
+        SonarCloud: 'SonarCloud'
+        organization: 'allantests'
+        scannerMode: 'CLI'
+        configMode: 'file'
 
-    # - task: SonarCloudAnalyze@1
-    #   inputs:
-    #     jdkversion: 'JAVA_HOME_17_X64'
+    - task: SonarCloudAnalyze@1
+      inputs:
+        jdkversion: 'JAVA_HOME_17_X64'
 
-    # - task: SonarCloudPublish@1
-    #   inputs:
-    #     pollingTimeoutSec: '600'
+    - task: SonarCloudPublish@1
+      inputs:
+        pollingTimeoutSec: '600'
 
     - task: owaspzap@1
       inputs:
@@ -97,7 +97,7 @@ stages:
         testResultsFiles: 'owaspzap/test-results.xml' 
         
     - bash: cp owaspzap/test-results.xml $(Build.ArtifactStagingDirectory)/test-results.xml
-    - bash: cp owaspzap/report.json $(Build.ArtifactStagingDirectory)/report.json
+    # - bash: cp owaspzap/report.json $(Build.ArtifactStagingDirectory)/report.json
 
     - task: PublishBuildArtifacts@1
       inputs:
@@ -105,11 +105,12 @@ stages:
         ArtifactName: 'project'
         publishLocation: 'Container' 
     
-    - task: PublishBuildArtifacts@1
-      inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)/report.json'
-        ArtifactName: 'project2'
-        publishLocation: 'Container'
+    - bash: ls -lha owaspzap
+    # - task: PublishBuildArtifacts@1
+    #   inputs:
+    #     PathtoPublish: '$(Build.ArtifactStagingDirectory)/report.json'
+    #     ArtifactName: 'project2'
+        # publishLocation: 'Container'
 
     # - task: PublishBuildArtifacts@1
     #   inputs:
