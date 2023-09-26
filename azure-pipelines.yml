@@ -36,7 +36,7 @@ stages:
         threshold: '600'
         scantype: 'targetedScan'
         url: 'https://bj-share.info/'
-        port: '3000'
+        port: '80'
       displayName: 'Owasp Scan'
 
     - bash: |
