@@ -32,7 +32,7 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          $xslt_settings.EnableDocumentFunction = 1;
+          # $xslt_settings.EnableDocumentFunction = 1;
           $XmlInputFile = "xml_report.xml"
           $XmlOutputFile = "converted_report.xml"
           $XslTransform = New-Object System.Xml.Xsl.XslCompiledTransform
