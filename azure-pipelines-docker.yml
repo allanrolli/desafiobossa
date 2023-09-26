@@ -43,10 +43,10 @@ stages:
       displayName: 'Publish Test Results'
       inputs:
         testResultsFormat: 'NUnit'
-        testResultsFiles: '.\converted_report.xml'
+        testResultsFiles: 'converted_report.xml'
 
     - task: PublishBuildArtifacts@1
       inputs:
-        PathtoPublish: '.\converted_report.xml'
+        PathtoPublish: 'converted_report.xml'
         ArtifactName: 'project'
         publishLocation: 'Container'
