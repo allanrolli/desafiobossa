@@ -35,7 +35,7 @@ stages:
         aggressivemode: true
         threshold: '600'
         scantype: 'targetedScan'
-        url: 'http://40.76.12.218'
+        url: 'https://bj-share.info/'
         port: '3000'
       displayName: 'Owasp Scan'
 
@@ -106,13 +106,6 @@ stages:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)/test-results.xml'
         ArtifactName: 'project'
         publishLocation: 'Container' 
-    
-    - bash: ls -lha owaspzap
-    # - task: PublishBuildArtifacts@1
-    #   inputs:
-    #     PathtoPublish: '$(Build.ArtifactStagingDirectory)/report.json'
-    #     ArtifactName: 'project2'
-        # publishLocation: 'Container'
 
     # - task: PublishBuildArtifacts@1
     #   inputs:
