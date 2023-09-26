@@ -32,9 +32,9 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          $XslPath = ".\xml_to_nunit.xslt" 
-          $XmlInputPath = ".\xml_report.xml"
-          $XmlOutputPath = ".\converted_report.xml"
+          $XslPath = "xml_to_nunit.xslt" 
+          $XmlInputPath = "xml_report.xml"
+          $XmlOutputPath = "converted_report.xml"
           $XslTransform = New-Object System.Xml.Xsl.XslCompiledTransform
           $XslTransform.Load($XslPath)
           $XslTransform.Transform($XmlInputPath, $XmlOutputPath)   
