@@ -9,41 +9,44 @@ stages:
     steps:
     - checkout: self
 
-    - bash: docker build -t defect .
-      displayName: 'Build Image'
+    - bash: ls -lha
+      displayName: 'LS'
 
-    - bash: docker run -d -p 3000:3000 defect
-      displayName: 'App Container'
+    # - bash: docker build -t defect .
+    #   displayName: 'Build Image'
 
-    - task: Bash@3
-      displayName: 'Owasp Container Scan'
-      inputs:
-        targetType: 'inline'
-        script: |
-          chmod -R 777  ./
-                  docker run --rm -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-full-scan.py -t http://$(ip -f inet -o addr show docker0 | awk '{print $4}' | cut -d '/' -f 1):3000 -x 
-          xml_report.xml
-                  true
-    - task: PowerShell@2
-      displayName: 'PowerShell Script'
-      inputs:
-        targetType: 'inline'
-        script: |
-          $XslPath = "desafiobossa/xml_to_nunit.xslt" 
-          $XmlInputPath = "xml_report.xml"
-          $XmlOutputPath = "converted_report.xml"
-          $XslTransform = New-Object System.Xml.Xsl.XslCompiledTransform
-          $XslTransform.Load($XslPath)
-          $XslTransform.Transform($XmlInputPath, $XmlOutputPath)   
+    # - bash: docker run -d -p 3000:3000 defect
+    #   displayName: 'App Container'
 
-    - task: PublishTestResults@2
-      displayName: 'Publish Test Results'
-      inputs:
-        testResultsFormat: 'NUnit'
-        testResultsFiles: 'converted_report.xml'
+    # - task: Bash@3
+    #   displayName: 'Owasp Container Scan'
+    #   inputs:
+    #     targetType: 'inline'
+    #     script: |
+    #       chmod -R 777  ./
+    #               docker run --rm -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-full-scan.py -t http://$(ip -f inet -o addr show docker0 | awk '{print $4}' | cut -d '/' -f 1):3000 -x 
+    #       xml_report.xml
+    #               true
+    # - task: PowerShell@2
+    #   displayName: 'PowerShell Script'
+    #   inputs:
+    #     targetType: 'inline'
+    #     script: |
+    #       $XslPath = "desafiobossa/xml_to_nunit.xslt" 
+    #       $XmlInputPath = "xml_report.xml"
+    #       $XmlOutputPath = "converted_report.xml"
+    #       $XslTransform = New-Object System.Xml.Xsl.XslCompiledTransform
+    #       $XslTransform.Load($XslPath)
+    #       $XslTransform.Transform($XmlInputPath, $XmlOutputPath)   
 
-    - task: PublishBuildArtifacts@1
-      inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)/converted_report.xml'
-        ArtifactName: 'project'
-        publishLocation: 'Container'    
+    # - task: PublishTestResults@2
+    #   displayName: 'Publish Test Results'
+    #   inputs:
+    #     testResultsFormat: 'NUnit'
+    #     testResultsFiles: 'converted_report.xml'
+
+    # - task: PublishBuildArtifacts@1
+    #   inputs:
+    #     PathtoPublish: '$(Build.ArtifactStagingDirectory)/converted_report.xml'
+    #     ArtifactName: 'project'
+    #     publishLocation: 'Container'
