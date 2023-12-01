@@ -35,7 +35,7 @@ stages:
         aggressivemode: true
         threshold: '600'
         scantype: 'targetedScan'
-        url: 'https://bj-share.info/'
+        url: 'https://sga.com.br/'
         port: '80'
       displayName: 'Owasp Scan'
 
