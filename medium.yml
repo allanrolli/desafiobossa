@@ -15,7 +15,7 @@ stages:
         steps:
           - checkout: self
           - checkout: desafiobossa
-          - bash: docker build -t defect .
+          - bash: docker build -t defect ./desafiobossa
             displayName: Build Image
           - bash: docker run -d -p 3000:3000 defect
             displayName: App Container
