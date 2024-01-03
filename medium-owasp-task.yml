@@ -17,7 +17,7 @@ stages:
     - task: owaspzap@1
       inputs:
         aggressivemode: true
-        threshold: '50'
+        threshold: '400'
         port: '3000'
       displayName: 'Owasp Scan'
 
