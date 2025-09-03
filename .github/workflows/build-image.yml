@@ -27,7 +27,8 @@ jobs:
         with:
           images: ${{env.IMAGE_REGISTRY_URL}}/${{ github.repository }}
           tags: |
-            type=sha,format=long,prefix=
+            type=sha,format=short,prefix=
+            type=raw,value=latest
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
